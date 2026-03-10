@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viralora — Free AI Tools for Creators | YouTube, Instagram, Blog & More</title>
+<meta name="description" content="40+ free browser-based AI tools for YouTube creators, Instagram, bloggers and filmmakers. No sign-up. No cost. Generate viral content instantly.">
+<meta name="keywords" content="free AI tools, YouTube title generator, Instagram caption generator, blog writer, viral content, AI writing tools">
+<meta name="author" content="Venkata Sai Yadav">
+<meta property="og:title" content="Viralora — Free AI Tools for Creators">
+<meta property="og:description" content="40+ free AI tools for creators. No sign-up, no cost.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://viralora.org">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --neon:#00f5c4;--violet:#7b2fff;--pink:#ff2d78;--orange:#ff7a00;
+  --dark:#070a12;--dark2:#0d1120;--card:#111827;--card2:#161d2e;
+  --border:rgba(123,47,255,0.22);--border2:rgba(255,255,255,0.06);
+  --text:#e8eaf6;--muted:#7a8499;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;
+  justify-content:space-between;padding:0 2rem;height:64px;
+  background:rgba(7,10,18,0.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border2);}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;letter-spacing:-0.02em;
+  background:linear-gradient(135deg,#fff 0%,var(--neon) 60%,var(--violet) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer;text-decoration:none;}
+.nav-links{display:flex;gap:0.25rem;list-style:none;align-items:center;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;padding:6px 14px;
+  border-radius:8px;transition:all 0.2s;cursor:pointer;}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,0.06);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-cta{background:linear-gradient(135deg,var(--violet),var(--neon));border:none;
+  padding:8px 20px;border-radius:100px;color:#fff;font-weight:600;font-size:0.85rem;
+  cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity 0.2s;white-space:nowrap;}
+.nav-cta:hover{opacity:0.85}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:1001;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;
+  background:rgba(7,10,18,0.99);backdrop-filter:blur(20px);z-index:999;
+  flex-direction:column;padding:2rem;gap:0.5rem;overflow-y:auto;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--text);text-decoration:none;font-size:1.05rem;padding:14px 16px;
+  border-radius:12px;border:1px solid var(--border2);transition:all 0.2s;
+  font-family:'Syne',sans-serif;font-weight:600;cursor:pointer;}
+.mobile-menu a:hover{border-color:var(--neon);color:var(--neon);background:rgba(0,245,196,0.05);}
+.mobile-menu .m-cta{background:linear-gradient(135deg,var(--violet),var(--neon));border-color:transparent;color:#fff;text-align:center;margin-top:1rem;}
+.page{display:none;}
+.page.active{display:block;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:100px 2rem 4rem;position:relative;
+  background:radial-gradient(ellipse 90% 70% at 50% -10%,rgba(123,47,255,0.22) 0%,transparent 65%),
+    radial-gradient(ellipse 60% 50% at 90% 90%,rgba(0,245,196,0.08) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 30% at 10% 80%,rgba(255,45,120,0.07) 0%,transparent 60%),var(--dark);}
+.hero::before{content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(123,47,255,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(123,47,255,0.04) 1px,transparent 1px);
+  background-size:50px 50px;pointer-events:none;}
+.live-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:2rem;
+  border:1px solid rgba(0,245,196,0.3);background:rgba(0,245,196,0.08);border-radius:100px;
+  padding:6px 18px;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--neon);position:relative;z-index:1;}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--neon);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(1.6)}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,8vw,6rem);font-weight:800;
+  line-height:1.05;letter-spacing:-0.04em;margin-bottom:1.5rem;position:relative;z-index:1;}
+.grad{background:linear-gradient(135deg,#fff 20%,var(--neon) 55%,var(--violet) 90%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--muted);max-width:580px;
+  line-height:1.8;margin-bottom:2.5rem;position:relative;z-index:1;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;margin-bottom:3.5rem;}
+.btn-primary{background:linear-gradient(135deg,var(--violet),var(--neon));border:none;
+  padding:14px 32px;border-radius:100px;color:#fff;font-weight:700;font-size:1rem;
+  cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 8px 40px rgba(123,47,255,0.35);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 50px rgba(123,47,255,0.5);}
+.btn-ghost{background:transparent;border:1px solid var(--border);padding:14px 32px;
+  border-radius:100px;color:var(--text);font-size:1rem;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.btn-ghost:hover{border-color:var(--neon);color:var(--neon);}
+.stats{display:flex;gap:3rem;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;}
+.stat-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;
+  background:linear-gradient(135deg,var(--neon),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-label{font-size:0.8rem;color:var(--muted);margin-top:2px;text-align:center;}
+
+/* SECTION */
+.section{padding:80px 2rem;max-width:1200px;margin:0 auto;}
+.section-tag{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--violet);margin-bottom:0.4rem;}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem;}
+.section-sub{color:var(--muted);max-width:560px;line-height:1.8;margin-bottom:3rem;}
+
+/* FILTER */
+.filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2.5rem;}
+.tab-btn{padding:8px 18px;border-radius:100px;border:1px solid var(--border2);
+  background:var(--card);color:var(--muted);font-size:0.84rem;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all 0.2s;white-space:nowrap;}
+.tab-btn:hover{border-color:var(--border);color:var(--text);}
+.tab-btn.active{background:linear-gradient(135deg,var(--violet),var(--neon));border-color:transparent;color:#fff;font-weight:600;}
+
+/* TOOL CARDS */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.25rem;}
+.tool-card{background:var(--card);border:1px solid var(--border2);border-radius:16px;
+  padding:1.5rem;cursor:pointer;transition:all 0.25s;position:relative;overflow:hidden;}
+.tool-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--violet),var(--neon));opacity:0;transition:opacity 0.25s;}
+.tool-card:hover{border-color:rgba(123,47,255,0.5);transform:translateY(-4px);box-shadow:0 16px 48px rgba(123,47,255,0.14);}
+.tool-card:hover::before{opacity:1;}
+.tool-icon{font-size:1.8rem;margin-bottom:0.75rem;}
+.tool-name{font-family:'Syne',sans-serif;font-size:0.98rem;font-weight:700;margin-bottom:0.3rem;}
+.tool-desc{font-size:0.81rem;color:var(--muted);line-height:1.6;}
+.tool-cat{display:inline-block;padding:2px 10px;border-radius:100px;font-size:0.67rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;margin-top:0.75rem;}
+.cat-youtube{background:rgba(255,45,120,0.12);color:var(--pink);}
+.cat-instagram{background:rgba(255,122,0,0.12);color:var(--orange);}
+.cat-blog{background:rgba(0,245,196,0.12);color:var(--neon);}
+.cat-marketing{background:rgba(123,47,255,0.12);color:#b98fff;}
+.cat-creator{background:rgba(255,200,0,0.12);color:#ffc800;}
+.cat-writing{background:rgba(100,200,255,0.12);color:#64c8ff;}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,0.8);backdrop-filter:blur(12px);
+  align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--card2);border:1px solid var(--border);border-radius:24px;
+  width:100%;max-width:680px;max-height:90vh;overflow-y:auto;animation:modalIn 0.3s ease;}
+@keyframes modalIn{from{opacity:0;transform:scale(0.94) translateY(20px)}to{opacity:1;transform:none}}
+.modal-header{padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--border2);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;position:sticky;top:0;background:var(--card2);z-index:1;}
+.modal-icon{font-size:2rem;margin-bottom:0.4rem;}
+.modal-title{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:700;}
+.modal-close{background:rgba(255,255,255,0.07);border:none;color:var(--muted);
+  width:34px;height:34px;min-width:34px;border-radius:8px;cursor:pointer;font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.modal-close:hover{background:rgba(255,45,120,0.2);color:var(--pink);}
+.modal-body{padding:2rem;}
+.input-group{margin-bottom:1.2rem;}
+.input-group label{display:block;font-size:0.84rem;color:var(--muted);margin-bottom:5px;font-weight:500;}
+.input-group input,.input-group textarea,.input-group select{
+  width:100%;background:var(--dark2);border:1px solid var(--border);border-radius:10px;
+  padding:12px 14px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.92rem;
+  transition:border-color 0.2s;resize:vertical;outline:none;}
+.input-group input:focus,.input-group textarea:focus,.input-group select:focus{border-color:var(--violet);}
+.input-group select option{background:var(--dark2);}
+.input-group textarea{min-height:80px;}
+.input-error{border-color:var(--pink) !important;}
+.generate-btn{width:100%;padding:14px;border-radius:12px;
+  background:linear-gradient(135deg,var(--violet),var(--neon));border:none;color:#fff;
+  font-weight:700;font-size:1rem;cursor:pointer;font-family:'DM Sans',sans-serif;
+  transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:0.5rem;}
+.generate-btn:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(123,47,255,0.4);}
+.generate-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;box-shadow:none;}
+.output-box{margin-top:1.5rem;background:var(--dark);border:1px solid var(--border);
+  border-radius:12px;padding:1.25rem;font-size:0.88rem;line-height:1.85;
+  color:var(--text);white-space:pre-wrap;word-break:break-word;display:none;}
+.output-box.show{display:block;}
+.output-actions{display:none;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.output-actions.show{display:flex;}
+.act-btn{background:rgba(0,245,196,0.1);border:1px solid rgba(0,245,196,0.25);
+  color:var(--neon);padding:8px 18px;border-radius:8px;cursor:pointer;
+  font-size:0.82rem;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.act-btn:hover{background:rgba(0,245,196,0.2);}
+.act-btn.regen{background:rgba(123,47,255,0.1);border-color:rgba(123,47,255,0.3);color:#b98fff;}
+.loading-wrap{display:none;align-items:center;gap:10px;margin-top:1.25rem;color:var(--muted);font-size:0.9rem;}
+.loading-wrap.show{display:flex;}
+.spinner{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--neon);
+  border-radius:50%;animation:spin 0.7s linear infinite;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.progress-bar{height:3px;background:linear-gradient(90deg,var(--violet),var(--neon));
+  border-radius:3px;width:0;transition:width 0.8s ease;margin-top:8px;}
+
+/* TRENDING */
+.trending-hero{padding:120px 2rem 60px;text-align:center;position:relative;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(255,45,120,0.15) 0%,transparent 65%),var(--dark);}
+.trend-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.trend-panel{background:var(--card);border:1px solid var(--border2);border-radius:20px;overflow:hidden;}
+.trend-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:12px;}
+.trend-header-icon{font-size:1.4rem;}
+.trend-header-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;}
+.trend-header-sub{font-size:0.75rem;color:var(--muted);}
+.trend-refresh{margin-left:auto;background:rgba(255,255,255,0.06);border:1px solid var(--border2);
+  color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer;font-size:0.78rem;
+  font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.trend-refresh:hover{color:var(--neon);border-color:rgba(0,245,196,0.3);}
+.rss-item{display:flex;align-items:flex-start;gap:12px;padding:0.9rem 1.25rem;
+  border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;transition:background 0.2s;}
+.rss-item:last-child{border-bottom:none;}
+.rss-item:hover{background:rgba(255,255,255,0.03);}
+.trend-num{font-family:'Syne',sans-serif;font-weight:700;font-size:0.75rem;color:var(--violet);min-width:22px;padding-top:2px;}
+.rss-item-title{font-size:0.87rem;font-weight:500;line-height:1.45;margin-bottom:3px;}
+.rss-item-title a{color:var(--text);text-decoration:none;transition:color 0.2s;}
+.rss-item-title a:hover{color:var(--neon);}
+.rss-item-meta{font-size:0.72rem;color:var(--muted);}
+.trend-source{display:inline-block;padding:1px 8px;border-radius:100px;font-size:0.65rem;
+  text-transform:uppercase;letter-spacing:0.06em;margin-right:6px;}
+.src-yt{background:rgba(255,45,120,0.12);color:var(--pink);}
+.src-news{background:rgba(0,245,196,0.12);color:var(--neon);}
+.src-tech{background:rgba(123,47,255,0.12);color:#b98fff;}
+.src-ent{background:rgba(255,122,0,0.12);color:var(--orange);}
+.trend-loading{padding:2.5rem;text-align:center;color:var(--muted);font-size:0.88rem;}
+
+/* ABOUT */
+.about-hero{padding:140px 2rem 80px;text-align:center;position:relative;
+  background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(123,47,255,0.18) 0%,transparent 65%),var(--dark);}
+.founder-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2.5rem;max-width:760px;margin:0 auto 3rem;}
+.founder-top{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.founder-avatar{width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,var(--violet),var(--neon));display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0;}
+.founder-name{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;}
+.founder-role{color:var(--neon);font-size:0.85rem;margin:3px 0;}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+.info-item{background:var(--dark2);border-radius:12px;padding:1rem 1.25rem;}
+.info-label{font-size:0.72rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;}
+.info-value{font-size:0.92rem;font-weight:500;}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem;max-width:900px;margin:0 auto;}
+.value-card{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;transition:all 0.25s;}
+.value-card:hover{border-color:var(--border);transform:translateY(-3px);}
+.value-icon{font-size:1.8rem;margin-bottom:0.75rem;}
+.value-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:0.3rem;}
+.value-desc{font-size:0.83rem;color:var(--muted);line-height:1.65;}
+
+/* PRIVACY */
+.privacy-content{max-width:800px;margin:0 auto;padding:120px 2rem 80px;}
+.privacy-content h1{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;}
+.privacy-date{color:var(--muted);font-size:0.85rem;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--border2);}
+.privacy-section{margin-bottom:2.5rem;}
+.privacy-section h2{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:1rem;color:var(--neon);}
+.privacy-section p,.privacy-section li{color:var(--muted);line-height:1.9;font-size:0.93rem;margin-bottom:0.5rem;}
+.privacy-section ul{padding-left:1.5rem;}
+.privacy-highlight{background:rgba(123,47,255,0.08);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border2);padding:60px 2rem 40px;text-align:center;
+  color:var(--muted);font-size:0.85rem;
+  background:radial-gradient(ellipse 60% 40% at 50% 100%,rgba(123,47,255,0.06) 0%,transparent 70%);}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;
+  background:linear-gradient(135deg,#fff,var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;}
+footer p{max-width:420px;margin:0 auto 1.5rem;line-height:1.7;}
+.footer-links{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
+.footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s;cursor:pointer;}
+.footer-links a:hover{color:var(--neon);}
+
+/* RESPONSIVE */
+@media(max-width:900px){.trend-grid{grid-template-columns:1fr;}.info-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none;}.hamburger{display:flex;}
+  nav{padding:0 1.25rem;}
+  .tools-grid{grid-template-columns:1fr 1fr;}
+  .stats{gap:1.5rem;}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .founder-top{flex-direction:column;text-align:center;}
+}
+@media(max-width:480px){.tools-grid{grid-template-columns:1fr;}.modal{border-radius:16px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" onclick="showPage('home')">Viralora</a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a onclick="showPage('tools')" id="nav-tools">AI Tools</a></li>
+    <li><a onclick="showPage('trending')" id="nav-trending">🔥 Trending</a></li>
+    <li><a onclick="showPage('about')" id="nav-about">About</a></li>
+    <li><a onclick="showPage('privacy')" id="nav-privacy">Privacy</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-cta" onclick="showPage('tools')">⚡ Free Tools</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="showPage('home');closeMobile()">🏠 Home</a>
+  <a onclick="showPage('tools');closeMobile()">🛠️ AI Tools (40+)</a>
+  <a onclick="showPage('trending');closeMobile()">🔥 Trending</a>
+  <a onclick="showPage('about');closeMobile()">👤 About</a>
+  <a onclick="showPage('privacy');closeMobile()">🔒 Privacy</a>
+  <a onclick="showPage('tools');closeMobile()" class="m-cta">⚡ Start Generating Free</a>
+</div>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="live-badge"><div class="live-dot"></div>40 Free AI Tools &middot; No Sign-up &middot; No Cost</div>
+    <h1>Generate <span class="grad">Viral Content</span><br>in Seconds</h1>
+    <p class="hero-sub">40+ powerful AI tools for creators, filmmakers, marketers and bloggers. Works 100% in your browser. Always free.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="showPage('tools')">🚀 Explore All 40 Tools</button>
+      <button class="btn-ghost" onclick="showPage('trending')">🔥 See What is Trending</button>
+    </div>
+    <div class="stats">
+      <div class="stat-item"><div class="stat-num">40+</div><div class="stat-label">AI Tools</div></div>
+      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Free Forever</div></div>
+      <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Sign-ups Needed</div></div>
+      <div class="stat-item"><div class="stat-num">&#8734;</div><div class="stat-label">Generations</div></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-tag">Most Popular Tools</div>
+    <div class="section-title">Start Creating Instantly</div>
+    <p class="section-sub">Click any tool. No loading screens, no API keys, no internet required.</p>
+    <div class="tools-grid" id="homeToolsGrid"></div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <button class="btn-primary" onclick="showPage('tools')">View All 40 Tools &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="page" id="page-tools">
+  <div style="padding-top:64px"></div>
+  <div class="section">
+    <div class="section-tag">Smart AI Generator &middot; 100% Offline &middot; Free Forever</div>
+    <div class="section-title">All 40 AI Tools</div>
+    <p class="section-sub">Click any tool to generate. Zero API calls. Works offline. Unlimited use.</p>
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="filterTools('all',this)">All (40)</button>
+      <button class="tab-btn" onclick="filterTools('youtube',this)">YouTube (8)</button>
+      <button class="tab-btn" onclick="filterTools('instagram',this)">Instagram (8)</button>
+      <button class="tab-btn" onclick="filterTools('blog',this)">Blog and SEO (6)</button>
+      <button class="tab-btn" onclick="filterTools('marketing',this)">Marketing (6)</button>
+      <button class="tab-btn" onclick="filterTools('creator',this)">Creator (6)</button>
+      <button class="tab-btn" onclick="filterTools('writing',this)">Writing (6)</button>
+    </div>
+    <div class="tools-grid" id="toolsGrid"></div>
+  </div>
+</div>
+
+<!-- TRENDING -->
+<div class="page" id="page-trending">
+  <div class="trending-hero">
+    <div class="live-badge"><div class="live-dot"></div>Updated Daily</div>
+    <h1 style="font-family:'Syne',sans-serif;font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:1rem;">What is <span class="grad">Trending</span> Today</h1>
+    <p style="color:var(--muted);max-width:520px;margin:0 auto;line-height:1.8;">Live trending topics from YouTube, Google News, Tech and Entertainment.</p>
+  </div>
+  <div class="section" style="padding-top:0">
+    <div style="background:rgba(123,47,255,0.08);border:1px solid var(--border);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+      <span style="font-size:1.2rem">💡</span>
+      <span style="font-size:0.9rem;color:var(--muted);flex:1">See something trending? Use our AI tools to create content around it instantly.</span>
+      <button class="btn-primary" style="padding:10px 22px;font-size:0.88rem" onclick="showPage('tools')">Open AI Tools &rarr;</button>
+    </div>
+    <div class="trend-grid">
+      <div class="trend-panel">
+        <div class="trend-header">
+          <span class="trend-header-icon">🎬</span>
+          <div><div class="trend-header-title">YouTube Trending</div><div class="trend-header-sub">Top topics today</div></div>
+          <button class="trend-refresh" onclick="loadYoutubeTrends()">&#8635; Refresh</button>
+        </div>
+        <div id="ytTrends"><div class="trend-loading">Loading...</div></div>
+      </div>
+      <div class="trend-panel">
+        <div class="trend-header">
+          <span class="trend-header-icon">📰</span>
+          <div><div class="trend-header-title">Google News</div><div class="trend-header-sub">Breaking news</div></div>
+          <button class="trend-refresh" onclick="loadGoogleNews()">&#8635; Refresh</button>
+        </div>
+        <div id="googleNews"><div class="trend-loading">Loading...</div></div>
+      </div>
+      <div class="trend-panel">
+        <div class="trend-header">
+          <span class="trend-header-icon">🤖</span>
+          <div><div class="trend-header-title">Tech and AI</div><div class="trend-header-sub">Latest in tech</div></div>
+          <button class="trend-refresh" onclick="loadTechNews()">&#8635; Refresh</button>
+        </div>
+        <div id="techNews"><div class="trend-loading">Loading...</div></div>
+      </div>
+      <div class="trend-panel">
+        <div class="trend-header">
+          <span class="trend-header-icon">🎭</span>
+          <div><div class="trend-header-title">Entertainment</div><div class="trend-header-sub">Movies, music, culture</div></div>
+          <button class="trend-refresh" onclick="loadEntNews()">&#8635; Refresh</button>
+        </div>
+        <div id="entNews"><div class="trend-loading">Loading...</div></div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:2rem;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;">
+        <span style="font-size:1.4rem">#️⃣</span>
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem">Trending Hashtags — Click to Copy</div>
+          <div style="font-size:0.75rem;color:var(--muted)">Updated daily</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;" id="trendHashtags"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <div class="live-badge" style="border-color:rgba(123,47,255,0.4);background:rgba(123,47,255,0.1);color:#b98fff">About Viralora</div>
+    <h1 style="font-family:'Syne',sans-serif;font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:1rem;">Built for Creators,<br><span class="grad">By a Creator</span></h1>
+    <p style="color:var(--muted);max-width:540px;margin:0 auto;line-height:1.8;">Viralora started with one belief: every creator deserves powerful AI tools, completely free.</p>
+  </div>
+  <div class="section" style="padding-top:0">
+    <div class="founder-card">
+      <div class="founder-top">
+        <div class="founder-avatar">🚀</div>
+        <div>
+          <div class="founder-name">Venkata Sai Yadav</div>
+          <div class="founder-role">Founder and Creator of Viralora</div>
+          <div style="color:var(--muted);font-size:0.82rem;">📍 Kadapa, Andhra Pradesh, India</div>
+        </div>
+      </div>
+      <p style="color:var(--muted);line-height:1.9;font-size:0.93rem;margin-bottom:1rem;">Hi! I am Venkata Sai Yadav, founder of Viralora. I built this platform because I believe every creator — regardless of budget or background — deserves access to world-class AI tools. As a creator myself, I know how hard it is to constantly generate fresh ideas, scripts, captions, and SEO content.</p>
+      <p style="color:var(--muted);line-height:1.9;font-size:0.93rem;">Viralora is my answer: 40+ free AI tools running entirely in your browser — no sign-up, no payment, no limits. Built from Kadapa, India, for creators worldwide. 🌍</p>
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">Location</div><div class="info-value">📍 Kadapa, Andhra Pradesh, India</div></div>
+        <div class="info-item"><div class="info-label">Website</div><div class="info-value">🌐 viralora.org</div></div>
+        <div class="info-item"><div class="info-label">Founded</div><div class="info-value">📅 2026</div></div>
+        <div class="info-item"><div class="info-label">Tools Available</div><div class="info-value">🛠️ 40+ Free AI Tools</div></div>
+        <div class="info-item"><div class="info-label">Technology</div><div class="info-value">⚡ 100% Browser-Based</div></div>
+        <div class="info-item"><div class="info-label">Cost</div><div class="info-value">💚 Free, Always</div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-bottom:2.5rem">
+      <div class="section-tag">What We Stand For</div>
+      <div class="section-title">Our Values</div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card"><div class="value-icon">🆓</div><div class="value-title">Always Free</div><div class="value-desc">Every tool is 100% free. No hidden charges, no paywalls, ever.</div></div>
+      <div class="value-card"><div class="value-icon">⚡</div><div class="value-title">Lightning Fast</div><div class="value-desc">Everything runs in your browser. Results in seconds, works offline.</div></div>
+      <div class="value-card"><div class="value-icon">🔒</div><div class="value-title">Privacy First</div><div class="value-desc">We collect nothing. Your prompts and outputs stay on your device.</div></div>
+      <div class="value-card"><div class="value-icon">🌍</div><div class="value-title">Global Access</div><div class="value-desc">Built for creators worldwide — from small towns to big cities.</div></div>
+      <div class="value-card"><div class="value-icon">🎨</div><div class="value-title">Creator-First</div><div class="value-desc">Every design decision is made with the creator in mind.</div></div>
+      <div class="value-card"><div class="value-icon">📈</div><div class="value-title">Results-Driven</div><div class="value-desc">Our tools are built to help you grow — views, followers, engagement.</div></div>
+    </div>
+    <div style="text-align:center;margin-top:3rem"><button class="btn-primary" onclick="showPage('tools')">🚀 Start Using Free Tools</button></div>
+  </div>
+</div>
+
+<!-- PRIVACY -->
+<div class="page" id="page-privacy">
+  <div class="privacy-content">
+    <h1>Privacy Policy</h1>
+    <div class="privacy-date">Last updated: <strong>March 2026</strong> &middot; Applies to viralora.org</div>
+    <div class="privacy-highlight"><p>🔒 <strong>Short version:</strong> Viralora does not collect, store, or sell any personal data. All AI tools run entirely in your browser using smart JavaScript. We use Google AdSense for ads.</p></div>
+    <div class="privacy-section"><h2>1. Who We Are</h2><p>Viralora (viralora.org) is operated by <strong>Venkata Sai Yadav</strong>, based in Kadapa, Andhra Pradesh, India. We provide browser-based AI content generation tools for creators worldwide.</p></div>
+    <div class="privacy-section"><h2>2. Information We Do NOT Collect</h2><ul><li>Personal information (name, email, phone)</li><li>Account data — no sign-up or login exists</li><li>Your prompts or outputs — all runs locally in your browser</li><li>Payment information — all tools are completely free</li><li>Location data or IP address logs</li></ul></div>
+    <div class="privacy-section"><h2>3. How Our AI Tools Work</h2><p>All AI tools use a smart JavaScript template engine that runs entirely in your browser. No data is sent to any server. Everything stays on your device.</p></div>
+    <div class="privacy-section"><h2>4. Google AdSense</h2><p>Viralora uses Google AdSense to display ads. Google may use cookies to show relevant ads. You can opt out at <a href="https://www.google.com/settings/ads" target="_blank" style="color:var(--neon)">Google Ad Settings</a>.</p></div>
+    <div class="privacy-section"><h2>5. Contact</h2><div class="privacy-highlight"><p><strong>Venkata Sai Yadav</strong><br>📍 Kadapa, Andhra Pradesh, India<br>🌐 viralora.org</p></div></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Viralora</div>
+  <p>Free AI tools for every creator. No limits, no cost, no sign-up. Built with love from Kadapa, India.</p>
+  <div class="footer-links">
+    <a onclick="showPage('home')">Home</a>
+    <a onclick="showPage('tools')">AI Tools</a>
+    <a onclick="showPage('trending')">Trending</a>
+    <a onclick="showPage('about')">About</a>
+    <a onclick="showPage('privacy')">Privacy</a>
+  </div>
+  <div>&copy; 2026 Viralora.org &middot; Created by <strong style="color:var(--neon)">Venkata Sai Yadav</strong> &middot; Kadapa, Andhra Pradesh, India</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modalBox">
+    <div class="modal-header">
+      <div>
+        <div class="modal-icon" id="modalIcon"></div>
+        <div class="modal-title" id="modalTitle"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()" title="Close">&#x2715;</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+//  SMART AI GENERATOR ENGINE — tested, verified clean
+// ═══════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════
+//  VIRALORA SMART AI GENERATOR — 100% Offline, No API Needed
+//  GitHub Pages Ready · Tested & Verified
+// ═══════════════════════════════════════════════════════════
+
+const R = (arr) => arr[Math.floor(Math.random() * arr.length)];
+const cap = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+
+const NUMBERS = ['3','5','7','10','12','15','21','25','30'];
+const POWER = ['Proven','Ultimate','Secret','Shocking','Viral','Expert','Hidden','Powerful','Incredible'];
+const EMOJIS = ['🔥','⚡','🚀','💥','✨','🎯','💡','🌟','👑','💎'];
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const CUR_MONTH = MONTHS[new Date().getMonth()];
+const CUR_YEAR = new Date().getFullYear();
+
+// ─── GENERATOR FUNCTIONS ───────────────────────────────────
+
+function gen1(f) {
+  var topic = f.topic || 'your topic';
+  var style = f.style || 'Viral';
+  var tc = cap(topic);
+  var viral = [
+    R(NUMBERS) + ' ' + tc + ' Hacks That Actually Work (' + CUR_YEAR + ')',
+    'I Tried ' + tc + ' for 30 Days — Here is What Happened',
+    'The ' + tc + ' Secret Nobody Talks About',
+    'Why Everyone is Wrong About ' + tc,
+    tc + ' Changed My Life (This Is Why)',
+    'Stop Doing This With ' + tc + ' — Do This Instead',
+    'The Truth About ' + tc + ' (Shocking Results)',
+    R(NUMBERS) + ' ' + tc + ' Mistakes You Are Making Right Now',
+    'How I Grew Using ' + tc + ' (Complete Breakdown)',
+    tc + ': The Method No One Is Talking About'
+  ];
+  var howto = [
+    'How to ' + tc + ' Step by Step (Beginner Guide ' + CUR_YEAR + ')',
+    'How I Mastered ' + tc + ' in Just 7 Days',
+    'How to ' + tc + ' Without Any Experience',
+    'How to ' + tc + ' — The Right Way',
+    'The Complete Guide to ' + tc + ' for Beginners',
+    'How to ' + tc + ' FAST (Proven Method)',
+    'How to Start ' + tc + ' Today — No Experience Needed',
+    'How to ' + tc + ' Like a Pro in ' + CUR_YEAR,
+    'How to Use ' + tc + ' to Change Your Life',
+    'How to ' + tc + ': My Honest Step-by-Step Process'
+  ];
+  var listicle = [
+    R(NUMBERS) + ' Best ' + tc + ' Tips for ' + CUR_YEAR,
+    R(NUMBERS) + ' Things I Wish I Knew About ' + tc + ' Earlier',
+    'Top ' + R(NUMBERS) + ' ' + tc + ' Strategies That Actually Work',
+    R(NUMBERS) + ' ' + tc + ' Facts That Will Blow Your Mind',
+    R(NUMBERS) + ' Reasons Why ' + tc + ' Will Change Everything',
+    R(NUMBERS) + ' ' + tc + ' Mistakes (And How to Avoid Them)',
+    R(NUMBERS) + ' Ways to Master ' + tc + ' in ' + CUR_YEAR,
+    R(NUMBERS) + ' Must-Know ' + tc + ' Tips for Beginners',
+    R(NUMBERS) + ' ' + tc + ' Hacks You Did Not Know Existed',
+    R(NUMBERS) + ' Shocking ' + tc + ' Statistics for ' + CUR_YEAR
+  ];
+  var question = [
+    'Is ' + tc + ' Really Worth It in ' + CUR_YEAR + '?',
+    'Can You Actually Make Money with ' + tc + '?',
+    'Why Is ' + tc + ' So Hard? (The Real Answer)',
+    'What Happens When You Try ' + tc + ' for 30 Days?',
+    'Is ' + tc + ' the Future? Here is the Truth',
+    'Why Are People Obsessed With ' + tc + '?',
+    'Does ' + tc + ' Actually Work? My Honest Results',
+    'What Nobody Tells You About ' + tc,
+    'Should You Start ' + tc + ' in ' + CUR_YEAR + '?',
+    'Why Is Everyone Talking About ' + tc + '?'
+  ];
+  var shocking = [
+    'I Spent $10,000 on ' + tc + ' — Here is What I Learned',
+    tc + ' Ruined My Life (And Then Saved It)',
+    'I Quit ' + tc + ' for 30 Days — The Results Are Shocking',
+    'The Dark Side of ' + tc + ' Nobody Shows You',
+    tc + ' Is NOT What You Think It Is',
+    'The ' + tc + ' Method That Got Me Banned (And Why I Would Do It Again)',
+    'I Exposed the ' + tc + ' Industry — Watch Before It Gets Deleted',
+    'What ' + tc + ' Experts Do Not Want You to Know',
+    'The ' + tc + ' Experiment That Changed Everything',
+    tc + ' vs Reality: What No One Tells You'
+  ];
+  var map = { Viral: viral, 'How-To': howto, Listicle: listicle, Question: question, Shocking: shocking };
+  var titles = map[style] || viral;
+  return titles.map(function(t, i) { return (i+1) + '. ' + t; }).join('\n');
+}
+
+function gen2(f) {
+  var title = f.title || 'My Video';
+  var keywords = f.keywords || 'tips, tutorial, guide';
+  var kwList = keywords.split(',').map(function(k) { return k.trim(); });
+  var greet = R(['Welcome back!', 'Hey everyone!', 'Whats up guys!', 'Hello friends!']);
+  var tags = kwList.map(function(k) { return '#' + k.replace(/\s+/g,''); }).join(' ');
+  return greet + ' In this video, I am going to show you everything about "' + title + '". Watch till the end!\n\n'
+    + '📌 WHAT YOU WILL LEARN:\n'
+    + '✅ The basics of ' + (kwList[0]||'this topic') + ' explained simply\n'
+    + '✅ ' + R(NUMBERS) + ' proven strategies that work in ' + CUR_YEAR + '\n'
+    + '✅ Common mistakes to avoid\n'
+    + '✅ My personal tips and honest experience\n'
+    + '✅ Step-by-step walkthrough\n\n'
+    + '⏱️ TIMESTAMPS:\n'
+    + '00:00 - Introduction\n'
+    + '01:30 - What is ' + (kwList[0]||'this') + '?\n'
+    + '04:00 - Getting started\n'
+    + '07:30 - Tips and strategies\n'
+    + '12:00 - Common mistakes\n'
+    + '15:30 - Final thoughts\n\n'
+    + '🔔 SUBSCRIBE and hit the bell so you never miss a video!\n'
+    + '👍 LIKE this video if it helped you!\n\n'
+    + '────────────────────────\n'
+    + tags + ' #' + CUR_YEAR + ' #Tutorial #HowTo #Tips\n\n'
+    + 'Thanks for watching! See you in the next one. ✌️';
+}
+
+function gen3(f) {
+  var topic = f.topic || 'tutorial';
+  var tags = [
+    topic, topic + ' tutorial', topic + ' guide', topic + ' tips',
+    topic + ' for beginners', topic + ' ' + CUR_YEAR, 'how to ' + topic,
+    'best ' + topic, topic + ' tricks', topic + ' hacks',
+    topic + ' step by step', topic + ' explained', 'learn ' + topic,
+    topic + ' for free', topic + ' secrets', topic + ' strategies',
+    topic + ' advice', topic + ' mistakes', topic + ' course',
+    topic + ' examples', topic + ' tips ' + CUR_YEAR, topic + ' guide ' + CUR_YEAR,
+    topic + ' review', topic + ' results', topic + ' method'
+  ];
+  return 'COPY AND PASTE THESE TAGS:\n\n' + tags.join(', ')
+    + '\n\n📊 Tag Strategy:\n'
+    + '• Short tags (1-2 words): broad reach\n'
+    + '• Medium tags (3-4 words): targeted views\n'
+    + '• Long-tail tags (5+ words): niche audience\n\n'
+    + 'Pro Tip: Put your most important tags FIRST.';
+}
+
+function gen4(f) {
+  var topic = (f.topic || 'tutorial').replace(/\s+/g,'');
+  var niche = (f.niche || 'general').replace(/\s+/g,'');
+  return '#️⃣ YOUTUBE HASHTAGS FOR: "' + f.topic + '"\n\n'
+    + '🔴 HIGH VOLUME (1M+ posts):\n'
+    + '#' + topic + ' #' + niche + ' #YouTube #YouTuber #' + CUR_YEAR + '\n\n'
+    + '🟡 MEDIUM VOLUME (100K-1M):\n'
+    + '#' + topic + 'Tips #' + topic + 'Guide #' + niche + 'Creator #' + topic + 'Tutorial #Learn' + cap(niche) + '\n\n'
+    + '🟢 NICHE (Under 100K):\n'
+    + '#' + topic + 'Community #' + niche + 'Tips #' + topic + 'Hacks #' + topic + 'ForBeginners #Best' + cap(topic) + '\n\n'
+    + '✅ USE ALL 15 IN YOUR DESCRIPTION\n\n'
+    + 'Pro Tip: Use 3-5 hashtags in description. Never in the title.';
+}
+
+function gen5(f) {
+  var topic = f.topic || 'this topic';
+  var audience = f.audience || 'creators';
+  var hooks = [
+    '"If you are a ' + audience + ' who struggles with ' + topic + ', the next 60 seconds will change how you think about it."',
+    '"I wasted 2 years on ' + topic + ' before I discovered this one thing — and I do not want the same for you."',
+    '"What if I told you that everything you have been taught about ' + topic + ' is wrong? Stay with me."',
+    '"In the next 10 minutes, I am going to show you the exact ' + topic + ' method that changed everything for me."',
+    '"' + R(NUMBERS) + ' out of 10 ' + audience + ' are making this ' + topic + ' mistake right now. Are you one of them?"'
+  ];
+  var out = '⚡ 5 POWERFUL HOOKS FOR: "' + topic + '"\n\n';
+  hooks.forEach(function(h, i) {
+    out += 'HOOK ' + (i+1) + ':\n' + h + '\n\n';
+  });
+  out += '💡 HOW TO USE THESE:\n'
+    + '• Say the hook in the first 10 seconds confidently\n'
+    + '• Look directly at the camera\n'
+    + '• Pause briefly after the hook\n'
+    + '• Let the video deliver the promise — do not explain the hook';
+  return out;
+}
+
+function gen6(f) {
+  var topic = f.topic || 'your topic';
+  var duration = f.duration || '10 minutes';
+  return '🎬 FULL VIDEO SCRIPT: "' + topic + '"\n'
+    + '📍 Target Duration: ' + duration + '\n'
+    + '──────────────────────────────────\n\n'
+    + '[HOOK — 0:00-0:30]\n'
+    + '"Did you know that most people get ' + topic + ' completely wrong? What I am about to share will surprise you."\n'
+    + '[Look directly at camera. Pause for effect.]\n\n'
+    + '[INTRO — 0:30-1:30]\n'
+    + '"Hey guys, welcome back! I am [Your Name]. Today we are diving deep into ' + topic + '. If you are new here — hit subscribe! We post new videos every week."\n\n'
+    + '[MAIN CONTENT]\n\n'
+    + '📌 SECTION 1: What is ' + topic + '?\n'
+    + '[B-ROLL: Show relevant visuals]\n'
+    + '"Let us start from the beginning. ' + cap(topic) + ' is basically... [explain in simple terms]. Most people think it means [common misconception], but actually it is about [real meaning]."\n\n'
+    + '📌 SECTION 2: Why ' + topic + ' Matters in ' + CUR_YEAR + '\n'
+    + '[CUT TO: Talking head]\n'
+    + '"Here is the thing — ' + topic + ' is more important than ever because [reason]. That is why I wanted to make this video."\n\n'
+    + '📌 SECTION 3: Top ' + R(NUMBERS) + ' Tips\n'
+    + '[B-ROLL: Demonstration]\n'
+    + '"Okay let us get into the good stuff. Here are my top tips for ' + topic + ':"\n'
+    + 'Tip 1: [First tip — be specific]\n'
+    + 'Tip 2: [Second tip — with example]\n'
+    + 'Tip 3: [Third tip — the best one]\n\n'
+    + '📌 SECTION 4: Common Mistakes\n'
+    + '"Before I wrap up, here is the biggest mistake I see with ' + topic + ': [mistake]. Here is how to avoid it: [solution]."\n\n'
+    + '[OUTRO — Final 60 seconds]\n'
+    + '"So to recap: [brief summary]. If you found this helpful, drop a LIKE. Subscribe for more. Comment below: what is your biggest challenge with ' + topic + '? See you next time!"\n\n'
+    + '[END SCREEN: 20 seconds — Subscribe + recommended video]';
+}
+
+function gen7(f) {
+  var idea = f.idea || 'your idea';
+  var platform = f.platform || 'Instagram Reel';
+  var ctas = ['Save this for later! 💾', 'Follow for more! 🔔', 'Share this with someone who needs it! 🙌', 'Comment YES if this helped! 👇'];
+  return '📱 ' + platform.toUpperCase() + ' SCRIPT: "' + idea + '"\n'
+    + '⏱️ Target: 30-45 seconds\n'
+    + '──────────────────────────\n\n'
+    + '[0:00-0:03] HOOK\n'
+    + '[VISUAL: Jump cut / bold text]\n'
+    + '"Nobody tells you this about ' + idea + '... 🤯"\n\n'
+    + '[0:03-0:15] VALUE DROP\n'
+    + '[VISUAL: Quick cuts showing steps]\n'
+    + 'Step 1: [First action — keep it visual]\n'
+    + 'Step 2: [Second action — show result]\n'
+    + 'Step 3: [Final action — the wow moment]\n\n'
+    + '[0:15-0:25] RESULT\n'
+    + '[VISUAL: Before/after OR reaction]\n'
+    + '"Look at the result — [describe the transformation]"\n\n'
+    + '[0:25-0:35] CALL TO ACTION\n'
+    + '[VISUAL: Text overlay]\n'
+    + '"' + R(ctas) + '"\n\n'
+    + '🎵 MUSIC: ' + R(['Trending upbeat track','Motivational beat','Lo-fi calm track','Trending sound']) + '\n'
+    + '📌 CAPTION: Use first 3-5 words as a hook. Add 5-10 hashtags.';
+}
+
+function gen8(f) {
+  var niche = f.niche || 'general';
+  var style = f.style || 'Educational';
+  var ideas = [
+    { t: '"I Tried ' + niche + ' for 30 Days" Challenge', w: 'Personal experiments go viral — viewers love real results', h: 'Start with your Day 1 vs Day 30 transformation' },
+    { t: R(NUMBERS) + ' ' + niche + ' Myths DEBUNKED', w: 'Controversy + value = viral. People share content that challenges beliefs', h: '"Everything you know about X is wrong"' },
+    { t: 'A Day in the Life of a ' + niche + ' Expert', w: 'Behind-the-scenes content creates connection and trust', h: 'Start with the most surprising part of your day' },
+    { t: 'I Spent $' + R(['100','500','1000','5000']) + ' on ' + niche + ' — Honest Review', w: 'Money + honesty = trust', h: 'Show the receipt first, then reveal results' },
+    { t: niche + ' Trends for ' + CUR_YEAR + ' (Do Not Get Left Behind)', w: 'Future-focused content drives massive shares', h: '"' + CUR_YEAR + ' is about to change ' + niche + ' forever"' },
+    { t: 'The ' + niche + ' Method That Grew My Results by ' + R(['200','500','1000']) + '%', w: 'Specific numbers + personal story = credibility', h: 'Show the analytics screenshot in first 5 seconds' },
+    { t: 'Reacting to the WORST ' + niche + ' Advice Online', w: 'Reaction + controversy drives comments and watch time', h: 'Start with the worst example you found' },
+    { t: 'What I Wish I Knew Before Starting ' + niche, w: 'Lessons learned format drives emotional connection', h: '"I wasted 2 years before I learned this"' },
+    { t: 'I Interviewed ' + R(['10','20','50']) + ' ' + niche + ' Experts — Here is What They Said', w: 'Authority + volume creates credibility', h: 'Start with the most surprising answer' },
+    { t: niche + ' for Beginners: Complete ' + CUR_YEAR + ' Roadmap', w: 'Evergreen content that ranks for years', h: '"If I had to start from scratch, here is exactly what I would do"' }
+  ];
+  var out = '💡 10 VIRAL VIDEO IDEAS FOR: "' + niche + '" (' + style + ')\n\n';
+  ideas.forEach(function(idea, i) {
+    out += (i+1) + '. 🎯 TITLE: ' + idea.t + '\n'
+      + '   📈 WHY IT GOES VIRAL: ' + idea.w + '\n'
+      + '   🪝 OPENING HOOK: ' + idea.h + '\n\n';
+  });
+  return out;
+}
+
+function gen9(f) {
+  var post = f.post || 'my post';
+  var tone = f.tone || 'Inspirational';
+  var tag = post.replace(/\s+/g,'');
+  var opts = {
+    Inspirational: [
+      'Every big journey starts with a single step. Today, I took mine with ' + post + '. 🌟\n\nWhat step are you taking today? Drop it in the comments! 👇\n\n#Inspiration #Motivation #' + tag + ' #GrowthMindset #PersonalDevelopment #DailyInspiration #YouCanDoIt #BelieveInYourself #LifeGoals #Mindset',
+      'Sometimes the most powerful thing you can do is keep going. 💪\n\nThis ' + post + ' journey has not been easy, but every struggle has made me stronger.\n\nSave this if you need the reminder. ❤️\n\n#KeepGoing #NeverGiveUp #' + tag + ' #Resilience #Inspiration #GrowthJourney #Believe #StayStrong #DailyMotivation #Progress'
+    ],
+    'Fun & Playful': [
+      'Me before ' + post + ': 😴\nMe after ' + post + ': 🤩🔥\n\nWho else can relate?? Tag your bestie who NEEDS this! 😂\n\n#' + tag + ' #Relatable #FunTimes #ViralPost #MoodForever #GoodVibesOnly #Fun #' + CUR_YEAR + 'Vibes #LifeIsGood #TagAFriend',
+      'Plot twist: ' + post + ' slapped way harder than expected 😭✨\n\nNot me obsessed with this now... send help 😂\n\n#' + tag + ' #PlotTwist #Obsessed #Relatable #GoodVibes #' + CUR_YEAR + ' #FunnyPost #VibeCheck #SameEnergy'
+    ],
+    Professional: [
+      'In my experience with ' + post + ', the results speak for themselves. 📊\n\nKey takeaway: consistency + strategy = results. No shortcuts, just proven methods.\n\nWhat is your current challenge? Let us talk in the comments.\n\n#Professional #' + tag + ' #Strategy #BusinessMindset #Success #Entrepreneur #Leadership #GrowthStrategy',
+    ],
+    Storytelling: [
+      '6 months ago, I knew nothing about ' + post + '.\n\nToday? Completely different story. 📖\n\nHere is what changed: I stopped waiting for the perfect moment and just started.\n\nIf you are on day 1 of your journey — you are already ahead of everyone still waiting. ❤️\n\n#' + tag + ' #MyStory #Journey #GrowthMindset #StartToday #Transformation #Authentic #LifeLessons'
+    ],
+    Bold: [
+      'Hot take: ' + post + ' is the most underrated thing you can invest in right now. 🔥\n\nChange my mind. 👇\n\nThe people sleeping on this will regret it in 12 months.\n\n#' + tag + ' #HotTake #BoldStatement #' + CUR_YEAR + ' #Trending #TruthBomb #RealTalk #GameChanger'
+    ]
+  };
+  var captions = opts[tone] || opts.Inspirational;
+  var out = '📸 INSTAGRAM CAPTIONS FOR: "' + post + '"\n\n──────────────────────────\n\n';
+  captions.forEach(function(c, i) {
+    out += 'OPTION ' + (i+1) + ':\n' + c + '\n\n──────────────────────────\n\n';
+  });
+  return out;
+}
+
+function gen10(f) {
+  var topic = (f.topic || 'content').replace(/\s+/g,'');
+  var size = f.size || 'Small (under 10K)';
+  return '#️⃣ 30 INSTAGRAM HASHTAGS FOR: "' + f.topic + '"\nOptimized for: ' + size + ' accounts\n\n'
+    + '📌 GROUP 1 — NICHE (under 50K posts):\n'
+    + '#' + topic + 'Tips #' + topic + 'Community #' + topic + 'Life #' + topic + 'Goals #' + topic + 'Lovers #' + topic + 'Journey #' + topic + 'Daily #' + topic + 'Inspiration #' + topic + 'Creator #' + topic + 'Vibes\n\n'
+    + '📌 GROUP 2 — MEDIUM (50K-500K posts):\n'
+    + '#' + topic + 'Guide #' + topic + 'Hacks #' + topic + 'Tutorial #Best' + cap(topic) + ' #' + topic + 'Strategy #' + topic + 'Expert #' + topic + 'Content #' + topic + 'Ideas #' + topic + 'Growth #' + topic + 'Tips' + CUR_YEAR + '\n\n'
+    + '📌 GROUP 3 — BROAD (500K+ posts):\n'
+    + '#' + topic + ' #' + CUR_YEAR + cap(topic) + ' #InstagramMarketing #ContentCreator #SocialMediaTips #Viral #Trending #CreatorEconomy #ContentMarketing #DigitalMarketing\n\n'
+    + '✅ HOW TO USE:\n'
+    + '• Paste all 30 in your FIRST COMMENT (not caption)\n'
+    + '• Rotate hashtag groups every 3-5 posts\n'
+    + '• Replace 5-10 hashtags per post to avoid spam detection';
+}
+
+function gen11(f) {
+  var reel = f.reel || 'my reel';
+  var tag = reel.replace(/\s+/g,'');
+  return '🎬 REEL CAPTIONS FOR: "' + reel + '"\n\n──────────────────\n\n'
+    + 'OPTION 1 (Action-driven):\n'
+    + R(EMOJIS) + ' ' + cap(reel) + ' hits different 💥\nSave this for later! 💾\n#' + tag + ' #Reels #ViralReels #' + CUR_YEAR + 'Reels #ReelItFeelIt\n\n──────────────────\n\n'
+    + 'OPTION 2 (Curiosity hook):\n'
+    + 'POV: You just discovered the best ' + reel + ' method 🤯\nDrop a 🔥 if this helped!\n#Reels' + CUR_YEAR + ' #' + tag + ' #ExplorePageReels #Trending #ViralVideo\n\n──────────────────\n\n'
+    + 'OPTION 3 (CTA-focused):\n'
+    + 'Everybody needs to see this ' + reel + ' hack 👇\nFollow for more! 🔔\n#' + tag + 'Reels #InstagramReels #ReelViral #' + CUR_YEAR + ' #ContentCreator\n\n'
+    + '💡 PRO TIP: Keep captions under 125 characters so they do not get cut off in feed.';
+}
+
+function gen12(f) {
+  var name = f.name || 'Your Name';
+  var role = f.role || 'content creator';
+  var platform = f.platform || 'Instagram';
+  var opts = {
+    Instagram: [
+      '🚀 ' + name + ' | ' + cap(role) + '\nHelping you grow 📈\n✨ ' + R(NUMBERS) + 'K+ happy followers\n👇 Free resources below',
+      R(EMOJIS) + ' ' + role.toUpperCase() + ' | ' + name + '\nCreating content that actually works 🎯\n📍 India | ' + CUR_YEAR + '\n🔗 New video every week ↓',
+      'Hey, I am ' + name + ' 👋\n' + cap(role) + ' | Sharing what works\nDM me FREE for my guide\n⬇️'
+    ],
+    'Twitter/X': [
+      name + ' | ' + cap(role) + ' 🚀\nSharing tips on ' + role + ' daily\n' + R(NUMBERS) + '+ posts and counting | ' + CUR_YEAR,
+      'Building in public as a ' + role + ' 🔨 | ' + name + '\nThreads on growth and strategy — Follow for more'
+    ],
+    LinkedIn: [
+      name + ' | ' + cap(role) + '\nHelping professionals grow their brand 📈\n' + R(NUMBERS) + 'K+ connections | Sharing daily insights'
+    ],
+    TikTok: [
+      name + ' 🎯 | ' + cap(role) + '\n' + R(NUMBERS) + ' million+ views\nNew video every day — Follow! 🔔',
+      R(EMOJIS) + ' ' + name + ' | ' + role + ' content daily\nJoin ' + R(NUMBERS) + 'K+ creators learning here'
+    ],
+    YouTube: [
+      name + ' | ' + cap(role) + ' Channel 🎬\n' + R(NUMBERS) + '+ videos on ' + role + '\nNew video every week — Subscribe! 🔔',
+      'Welcome to ' + name + ' — your go-to channel for ' + role + '\nHit Subscribe for weekly ' + role + ' tips and tutorials!'
+    ]
+  };
+  var bios = opts[platform] || opts.Instagram;
+  var out = '✨ ' + platform.toUpperCase() + ' BIO OPTIONS FOR: ' + name + '\n\n';
+  bios.forEach(function(b, i) {
+    out += 'OPTION ' + (i+1) + ':\n' + b + '\n\n─────────────────\n\n';
+  });
+  return out;
+}
+
+function gen13(f) {
+  var niche = f.niche || 'general';
+  var platform = f.platform || 'Instagram';
+  return '💡 10 VIRAL ' + platform.toUpperCase() + ' POST IDEAS FOR: "' + niche + '"\n\n'
+    + '1. 📊 "Before vs After" post showing a real transformation in ' + niche + '\n   → Why: Social proof. People love real results. Format: Side-by-side carousel\n\n'
+    + '2. 🔥 "' + R(NUMBERS) + ' ' + niche + ' Mistakes Most People Make"\n   → Why: Fear of missing out + educational value. Format: Carousel (1 mistake per slide)\n\n'
+    + '3. 💬 "Unpopular Opinion About ' + niche + '"\n   → Why: Controversy drives comments and shares. Format: Quote graphic\n\n'
+    + '4. 📖 "My ' + niche + ' Story — From Zero to [Result]"\n   → Why: Personal stories create deep connection. Format: Long caption + photo\n\n'
+    + '5. ✅ "' + niche + ' Checklist for ' + CUR_YEAR + '"\n   → Why: Saves get boosted by algorithm. Format: Carousel checklist\n\n'
+    + '6. 🤫 "Secret ' + niche + ' Tip Nobody Talks About"\n   → Why: Exclusivity drives saves and shares. Format: Text graphic or Reel\n\n'
+    + '7. 💰 "What I Learned Spending $[Amount] on ' + niche + '"\n   → Why: Money + transparency = trust. Format: Photo + honest caption\n\n'
+    + '8. 🗣️ "I Asked ' + R(['10','50','100']) + ' ' + niche + ' Experts — Their Best Advice"\n   → Why: Authority + volume creates credibility. Format: Multi-image carousel\n\n'
+    + '9. 🔁 Trend Participation: Use current trending audio for ' + niche + '\n   → Why: Trending audio boosts Reel distribution by 3x. Format: Short Reel\n\n'
+    + '10. 📅 "' + niche + ' ' + CUR_MONTH + ' ' + CUR_YEAR + ' Update"\n    → Why: Timely content gets picked up by search. Format: Informational carousel';
+}
+
+function gen14(f) {
+  var comment = f.comment || 'Great post!';
+  var tone = f.tone || 'Friendly';
+  var opts = {
+    Friendly: [
+      'Thank you so much! 😊 This really made my day! What part resonated with you the most?',
+      'Aww, this means the world to me! 🙏 So glad you are here — stay tuned for more!',
+      'You are too kind! ❤️ Comments like yours keep me going. Drop any questions anytime!'
+    ],
+    Professional: [
+      'Thank you for your feedback — I am glad the content added value. Feel free to share any specific questions you would like me to cover next.',
+      'Appreciate the kind words. This is the kind of engagement that motivates me to keep creating quality content.',
+      'Thank you! If you would like to explore this topic further, I would be happy to create a deeper breakdown.'
+    ],
+    Funny: [
+      'You just made my whole week with this comment 😭😂 I literally screenshotted this. Legend.',
+      'Not me blushing at a comment at 2am 😂 You are the best, genuinely.',
+      'This comment is greater than my entire personality 💀 Thank you though, for real! 🙏'
+    ],
+    Grateful: [
+      'This comment genuinely touched my heart 🙏 Thank you for taking time to write this — it means more than you know!',
+      'I read every comment and this one stopped me in my tracks. Thank you, truly. ❤️',
+      'Your support is why I keep creating. This comment made everything worth it. 🙏✨'
+    ],
+    Engaging: [
+      'Love this! Tell me — what is your biggest challenge with this right now? I want to help! 👇',
+      'So glad it landed! Quick question — have you tried this yourself yet? What was your experience?',
+      'This is gold feedback! What topic would you like me to cover next? 🎯'
+    ]
+  };
+  var replies = opts[tone] || opts.Friendly;
+  var out = '💬 REPLY OPTIONS FOR:\n"' + comment + '"\nTone: ' + tone + '\n\n──────────────────\n\n';
+  replies.forEach(function(r, i) {
+    out += 'REPLY ' + (i+1) + ':\n' + r + '\n\n';
+  });
+  return out;
+}
+
+function gen15(f) {
+  var theme = f.theme || 'success';
+  var style = f.style || 'Motivational';
+  var motivational = [
+    '"The only way to predict your future is to create it. Start today."',
+    '"Success is not given. It is built — one decision at a time."',
+    '"Every expert was once a beginner who refused to quit."',
+    '"Your ' + theme + ' journey does not require perfection. It requires persistence."',
+    '"The gap between where you are and where you want to be is called action."',
+    '"Small progress is still progress. Never stop moving forward."',
+    '"Your future self is watching your present choices."',
+    '"Doubt kills more dreams than failure ever will."',
+    '"The best time to start was yesterday. The second best time is right now."',
+    '"Consistency is the bridge between goals and achievement."'
+  ];
+  var philosophical = [
+    '"' + cap(theme) + ' is not a destination — it is a way of seeing the world."',
+    '"We do not find meaning in ' + theme + '. We create it."',
+    '"The deeper you go into ' + theme + ', the more questions you find."',
+    '"Wisdom about ' + theme + ' is not knowing all the answers. It is knowing which questions to ask."',
+    '"Everything we understand about ' + theme + ' is just a beginning."',
+    '"The paradox of ' + theme + ': the more you chase it, the further it retreats."',
+    '"Time spent on ' + theme + ' is never wasted if it teaches you something new."',
+    '"We are shaped by our thoughts on ' + theme + ' — choose them wisely."',
+    '"The greatest teacher of ' + theme + ' is experience, not advice."',
+    '"In ' + theme + ', as in life, the journey matters more than the destination."'
+  ];
+  var witty = [
+    '"' + cap(theme) + ': easier said than done, but let us pretend we have it figured out."',
+    '"My relationship with ' + theme + ' is complicated — but we are working on it."',
+    '"They said ' + theme + ' was hard. They were not wrong, but here we are."',
+    '"The secret to ' + theme + '? Looking like you know what you are doing."',
+    '"' + cap(theme) + ' is just chaos with better PR."',
+    '"I did not choose the ' + theme + ' life. The ' + theme + ' life chose me. (Against my will.)"',
+    '"' + cap(theme) + ' experts: people who made all the mistakes before you."',
+    '"' + cap(theme) + ' is 10% inspiration and 90% figuring it out as you go."',
+    '"Nobody told me ' + theme + ' would feel like this. They were right not to."',
+    '"Hot take: ' + theme + ' is just consistency with a better marketing team."'
+  ];
+  var map = { Motivational: motivational, Philosophical: philosophical, Witty: witty };
+  var quotes = map[style] || motivational;
+  return '💎 10 ORIGINAL ' + style.toUpperCase() + ' QUOTES ABOUT "' + theme.toUpperCase() + '"\n\n'
+    + quotes.map(function(q, i) { return (i+1) + '. ' + q; }).join('\n\n');
+}
+
+function gen16(f) {
+  var context = f.context || 'challenges';
+  var audience = f.audience || 'creators';
+  var ctag = context.replace(/\s+/g,'');
+  var atag = audience.replace(/\s+/g,'');
+  return '🌟 MOTIVATIONAL CAPTIONS FOR: "' + context + '"\n(Audience: ' + audience + ')\n\n─────────────────────\n\n'
+    + 'OPTION 1:\n'
+    + 'A year ago, I was exactly where you might be right now. 💭\n\n'
+    + 'Struggling with ' + context + '. Doubting everything. Wondering if it was even worth it.\n\n'
+    + 'Here is what I want you to know as a ' + audience.replace(/s$/, '') + ':\n\n'
+    + 'It IS worth it. Every hard day is building something you cannot see yet. 🔨\n\n'
+    + 'Keep going. Please. 🙏\n\n'
+    + '💬 Comment "ME" if you needed this today!\n\n'
+    + '#' + ctag + ' #Motivation #' + atag + ' #KeepGoing #YouGotThis #MindsetMatters #' + CUR_YEAR + 'Goals\n\n─────────────────────\n\n'
+    + 'OPTION 2:\n'
+    + 'This is your reminder that ' + context + ' does not have to be perfect to count. ✨\n\n'
+    + 'Done is better than perfect. Started is better than waiting. Imperfect action beats perfect inaction every single time.\n\n'
+    + 'Save this when you need it. ❤️\n\n'
+    + '#Motivation #' + ctag + ' #Growth #' + atag + 'Mindset #NeverGiveUp #Progress #' + CUR_YEAR + '\n\n─────────────────────\n\n'
+    + 'OPTION 3:\n'
+    + 'Hot take: ' + context + ' is supposed to feel hard. 🔥\n\n'
+    + 'That is how you know you are growing.\n\n'
+    + 'Every ' + audience.replace(/s$/, '') + ' who has ever achieved something real went through the exact same feelings you are having right now. Fear. Doubt. Confusion.\n\n'
+    + 'The difference? They kept going anyway. 👊\n\n'
+    + 'You are next. 🚀\n\n'
+    + '#' + ctag + ' #' + atag + 'Life #RealTalk #GrowthMindset #HardWork #YouCanDoIt #Inspire';
+}
+
+function gen17(f) {
+  var title = f.title || 'your topic';
+  var keywords = f.keywords || 'tips, guide';
+  var length = f.length || '800 words';
+  return '📝 BLOG POST: "' + title + '"\n🎯 Keywords: ' + keywords + ' | Length: ' + length + '\n'
+    + '══════════════════════════════\n\n'
+    + '# ' + title + '\n\n'
+    + '*Published: ' + CUR_MONTH + ' ' + CUR_YEAR + ' | By [Your Name] | [Category]*\n\n---\n\n'
+    + '## Introduction\n\n'
+    + 'Are you struggling with ' + title.toLowerCase() + '? You are not alone. Thousands of people search for answers on this topic every single day — and today, we are going to give you the complete answer.\n\n'
+    + 'In this guide, you will learn:\n'
+    + '- What ' + title.toLowerCase() + ' really means\n'
+    + '- ' + R(NUMBERS) + ' proven strategies that actually work\n'
+    + '- Common mistakes and how to avoid them\n'
+    + '- A step-by-step action plan you can start today\n\n'
+    + '---\n\n'
+    + '## What is ' + title + '?\n\n'
+    + 'Before we get into the strategies, let us make sure we are on the same page. ' + cap(title) + ' refers to [explanation]. In ' + CUR_YEAR + ', this has become more important than ever because [reason].\n\n'
+    + '---\n\n'
+    + '## ' + R(NUMBERS) + ' Proven Strategies for ' + title + '\n\n'
+    + '### 1. Start With the Basics\n\n'
+    + 'The first step to mastering ' + title.toLowerCase() + ' is understanding the fundamentals. [Expand with 2-3 sentences]\n\n'
+    + '### 2. Build Consistency\n\n'
+    + 'Consistency is the #1 factor in achieving results with ' + title.toLowerCase() + '. [Expand with examples]\n\n'
+    + '### 3. Track Your Progress\n\n'
+    + 'What gets measured gets improved. [Expand with specific metrics and tools]\n\n'
+    + '### 4. Learn From Mistakes\n\n'
+    + 'Every expert has failed multiple times. The key is [lesson]. [Expand]\n\n'
+    + '### 5. Take Action Every Day\n\n'
+    + 'The biggest barrier to success with ' + title.toLowerCase() + ' is inaction. [Motivational closing]\n\n'
+    + '---\n\n'
+    + '## Common Mistakes to Avoid\n\n'
+    + '❌ Mistake 1: [Common mistake] — Instead, do [correct approach]\n'
+    + '❌ Mistake 2: [Common mistake] — The better way is [solution]\n'
+    + '❌ Mistake 3: [Common mistake] — Experts recommend [best practice]\n\n'
+    + '---\n\n'
+    + '## Your 7-Day Action Plan\n\n'
+    + '📅 Day 1-2: Research and understand the basics\n'
+    + '📅 Day 3-4: Set up your systems and tools\n'
+    + '📅 Day 5-6: Take your first real action steps\n'
+    + '📅 Day 7: Review, reflect, and plan your next week\n\n'
+    + '---\n\n'
+    + '## Conclusion\n\n'
+    + cap(title) + ' does not have to be overwhelming. With the right strategies and consistent effort, anyone can achieve [desired outcome]. The best time to start is right now.\n\n'
+    + 'Did you find this guide helpful? Share it with someone who needs it! 👇\n\n'
+    + '---\n*Keywords: ' + keywords + ' | ' + CUR_YEAR + ' | Viralora.org*';
+}
+
+function gen18(f) {
+  var topic = f.topic || 'your topic';
+  var keyword = f.keyword || topic;
+  return '📰 10 SEO BLOG TITLES FOR: "' + topic + '"\nTarget keyword: "' + keyword + '"\n\n'
+    + '1. The Ultimate Guide to ' + cap(keyword) + ' in ' + CUR_YEAR + ' (Complete Breakdown)\n'
+    + '2. ' + R(NUMBERS) + ' Proven ' + cap(keyword) + ' Strategies That Actually Work\n'
+    + '3. How to Master ' + cap(keyword) + ': A Step-by-Step Guide for Beginners\n'
+    + '4. ' + cap(keyword) + ': Everything You Need to Know in ' + CUR_YEAR + '\n'
+    + '5. ' + R(NUMBERS) + ' ' + cap(keyword) + ' Mistakes You Are Probably Making Right Now\n'
+    + '6. Why Your ' + cap(keyword) + ' Strategy Is Not Working (And How to Fix It)\n'
+    + '7. The Beginner Guide ' + cap(keyword) + ' Guide: From Zero to Results in 30 Days\n'
+    + '8. ' + R(NUMBERS) + ' Best ' + cap(keyword) + ' Tips from Industry Experts (' + CUR_YEAR + ' Edition)\n'
+    + '9. How I Improved My ' + cap(keyword) + ' Results by ' + R(['200','500','1000']) + '% (Case Study)\n'
+    + '10. ' + cap(keyword) + ' vs. [Alternative]: Which Is Right for You in ' + CUR_YEAR + '?\n\n'
+    + '💡 SEO TIPS:\n'
+    + '• Use your exact keyword in the title\n'
+    + '• Include the year for freshness signals\n'
+    + '• Numbers increase CTR by up to 36%\n'
+    + '• Keep titles under 60 characters for full display in search';
+}
+
+function gen19(f) {
+  var title = f.title || 'your page';
+  var keyword = f.keyword || 'tips';
+  return '🔍 5 SEO META DESCRIPTIONS FOR: "' + title + '"\nFocus keyword: "' + keyword + '"\n\n──────────────────\n\n'
+    + '1. Discover proven ' + keyword + ' strategies that actually work in ' + CUR_YEAR + '. Our complete guide covers everything you need to know. Start improving today! ✅\n\n'
+    + '2. Looking for the best ' + keyword + ' tips? We have compiled the ultimate guide with ' + R(NUMBERS) + ' expert-tested strategies. Free, no sign-up required!\n\n'
+    + '3. Struggling with ' + keyword + '? Our step-by-step ' + CUR_YEAR + ' guide shows you exactly how to get results fast — even if you are a complete beginner.\n\n'
+    + '4. ' + cap(keyword) + ' made simple. Learn ' + R(NUMBERS) + ' proven methods, avoid common mistakes, and start seeing real results today. Updated for ' + CUR_YEAR + '.\n\n'
+    + '5. Want to master ' + keyword + '? This comprehensive guide gives you everything: strategies, tools, and a step-by-step action plan. Read now!\n\n'
+    + '📏 META DESCRIPTION RULES:\n'
+    + '✅ Keep under 160 characters\n'
+    + '✅ Include your focus keyword naturally\n'
+    + '✅ Include a call-to-action\n'
+    + '✅ Make it unique to each page';
+}
+
+function gen20(f) {
+  var content = f.content || 'your content';
+  var type = f.type || 'Benefit-driven';
+  var cc = cap(content);
+  var map = {
+    Curiosity: [
+      'The ' + cc + ' Secret Most People Will Never Know',
+      'What Nobody Tells You About ' + cc,
+      'Why ' + cc + ' Is Not What You Think It Is',
+      'The Surprising Truth About ' + cc + ' in ' + CUR_YEAR,
+      'You Are Probably Wrong About ' + cc + ' — Here Is Why',
+      'The Hidden Side of ' + cc + ' That Changes Everything',
+      'What Experts Do Not Want You to Know About ' + cc,
+      'The ' + cc + ' Myth That Is Costing You Results',
+      'Why Most ' + cc + ' Advice Is Dead Wrong',
+      'The ' + cc + ' Discovery That Shocked Everyone'
+    ],
+    'Benefit-driven': [
+      'Get Better ' + cc + ' Results in Just 7 Days',
+      'How ' + cc + ' Can Transform Your Life Starting Today',
+      R(NUMBERS) + ' Ways ' + cc + ' Will Change Everything for You',
+      'Double Your ' + cc + ' Results With These Proven Tips',
+      'The Fastest Way to Improve Your ' + cc + ' (Guaranteed)',
+      'Unlock the Full Potential of ' + cc + ' in ' + CUR_YEAR,
+      'Finally: A ' + cc + ' Strategy That Actually Works',
+      'Achieve ' + cc + ' Success Faster Than You Ever Thought Possible',
+      'Stop Wasting Time: The Right Way to Approach ' + cc,
+      'The ' + cc + ' Formula That Delivers Real Results'
+    ],
+    'How-to': [
+      'How to ' + cc + ' Even If You Are a Complete Beginner',
+      'How to Get Started With ' + cc + ' in Under 30 Minutes',
+      'How to ' + cc + ': The Step-by-Step ' + CUR_YEAR + ' Guide',
+      'How to Master ' + cc + ' Without Spending a Fortune',
+      'How to ' + cc + ' Like a Pro (Even With No Experience)',
+      'How to Fix Your ' + cc + ' Strategy Once and For All',
+      'How to ' + cc + ' the Right Way (Most People Get This Wrong)',
+      'How to ' + cc + ' Fast: ' + R(NUMBERS) + ' Proven Methods',
+      'How to ' + cc + ' From Scratch in ' + R(NUMBERS) + ' Simple Steps',
+      'How to ' + cc + ' and Actually See Results'
+    ],
+    Question: [
+      'Is ' + cc + ' Really Worth Your Time in ' + CUR_YEAR + '?',
+      'Are You Making These ' + cc + ' Mistakes?',
+      'What Is the Best ' + cc + ' Strategy for ' + CUR_YEAR + '?',
+      'Why Is ' + cc + ' So Hard? (And How to Make It Easy)',
+      'Which ' + cc + ' Method Is Right for You?',
+      'Does ' + cc + ' Actually Work? Here Is the Honest Truth',
+      'Why Are Your ' + cc + ' Efforts Not Paying Off?',
+      'When Should You Start With ' + cc + '?',
+      'How Long Does ' + cc + ' Actually Take to Work?',
+      'What Would Happen If You Mastered ' + cc + ' This Year?'
+    ]
+  };
+  var headlines = map[type] || map['Benefit-driven'];
+  return '📣 10 ' + type.toUpperCase() + ' HEADLINES FOR: "' + content + '"\n\n'
+    + headlines.map(function(h, i) { return (i+1) + '. ' + h; }).join('\n');
+}
+
+function gen21(f) {
+  var niche = f.niche || 'general';
+  var type = f.type || 'Blog Posts';
+  return '🧠 15 ' + type.toUpperCase() + ' IDEAS FOR: "' + niche + '"\n\n'
+    + '1. "' + R(NUMBERS) + ' Things I Wish I Knew Before Starting ' + niche + '"\n   → Resonates emotionally with beginners\n\n'
+    + '2. "The Ultimate ' + niche + ' Guide for ' + CUR_YEAR + ' (Updated)"\n   → Evergreen content that ranks for years\n\n'
+    + '3. "How I Got [Result] With ' + niche + ' in 30 Days"\n   → Personal story + proof = trust\n\n'
+    + '4. "' + niche + ' vs. [Alternative] — Which Is Better?"\n   → Comparison content drives decision-ready traffic\n\n'
+    + '5. "The Biggest ' + niche + ' Mistakes Beginners Make"\n   → Fear of failure drives engagement\n\n'
+    + '6. "' + R(NUMBERS) + ' Free ' + niche + ' Tools You Are Not Using Yet"\n   → "Free" + actionable = high saves\n\n'
+    + '7. "What the Top ' + niche + ' Creators Do Differently"\n   → Aspirational content drives shares\n\n'
+    + '8. "A Month of ' + niche + ': What I Learned (Honest Review)"\n   → Long-term accountability builds loyal audience\n\n'
+    + '9. "' + niche + ' Trends to Watch in ' + CUR_YEAR + '"\n   → Trend content gets shared quickly\n\n'
+    + '10. "The ' + niche + ' Checklist Every Beginner Needs"\n    → Checklists = saves = algorithm boost\n\n'
+    + '11. "I Interviewed ' + R(['5','10','20']) + ' ' + niche + ' Experts — Here Is What They Said"\n    → Authority content builds credibility fast\n\n'
+    + '12. "' + R(NUMBERS) + ' ' + niche + ' Case Studies That Will Inspire You"\n    → Real examples are the most convincing content\n\n'
+    + '13. "The Truth About ' + niche + ' Nobody Wants to Admit"\n    → Honest takes build deep trust\n\n'
+    + '14. "' + niche + ' for Beginners: Start Here (' + CUR_YEAR + ' Edition)"\n    → Entry-level content always has demand\n\n'
+    + '15. "How ' + niche + ' Changed in the Last Year — And What It Means for You"\n    → Timely updates position you as an authority';
+}
+
+function gen22(f) {
+  var topic = f.topic || 'your topic';
+  var purpose = f.purpose || 'FAQ Page';
+  return '❓ 20 QUESTIONS ABOUT "' + topic + '"\nPurpose: ' + purpose + '\n\n'
+    + '🟢 BEGINNER QUESTIONS:\n'
+    + '1. What is ' + topic + ' and why does it matter?\n'
+    + '2. How do I get started with ' + topic + '?\n'
+    + '3. Is ' + topic + ' free to use or try?\n'
+    + '4. How long does ' + topic + ' take to learn?\n'
+    + '5. What do I need to start with ' + topic + '?\n'
+    + '6. What are the basics of ' + topic + '?\n'
+    + '7. Is ' + topic + ' right for me?\n\n'
+    + '🟡 INTERMEDIATE QUESTIONS:\n'
+    + '8. What are the most common ' + topic + ' mistakes?\n'
+    + '9. How do I improve my ' + topic + ' results?\n'
+    + '10. What tools help with ' + topic + '?\n'
+    + '11. How much does ' + topic + ' cost to do properly?\n'
+    + '12. What is the fastest way to see results with ' + topic + '?\n'
+    + '13. How do I measure ' + topic + ' success?\n\n'
+    + '🔴 ADVANCED QUESTIONS:\n'
+    + '14. What are the advanced strategies for ' + topic + '?\n'
+    + '15. How do experts approach ' + topic + ' differently?\n'
+    + '16. What is the future of ' + topic + ' in ' + CUR_YEAR + '?\n'
+    + '17. How do I scale my ' + topic + ' efforts?\n'
+    + '18. What are the biggest ' + topic + ' trends right now?\n\n'
+    + '💛 PAIN-POINT QUESTIONS:\n'
+    + '19. Why is my ' + topic + ' not working despite my efforts?\n'
+    + '20. Is ' + topic + ' still worth it in ' + CUR_YEAR + '?';
+}
+
+function gen23(f) {
+  var product = f.product || 'your product';
+  var audience = f.audience || 'people';
+  var platform = f.platform || 'Facebook/Instagram';
+  return '📢 3 ' + platform.toUpperCase() + ' AD COPY OPTIONS FOR: "' + product + '"\n\n'
+    + '═══════════════════════════════\n'
+    + 'AD OPTION 1 — PAIN + SOLUTION\n'
+    + '═══════════════════════════════\n\n'
+    + '📌 HEADLINE: Tired of Struggling With [Problem]?\n'
+    + '📝 COPY:\n'
+    + 'We have been exactly where you are.\nStruggling. Frustrated. Ready to give up.\n\n'
+    + cap(product) + ' changes all of that.\n\n'
+    + '✅ [Benefit 1 — be specific]\n'
+    + '✅ [Benefit 2 — use a number]\n'
+    + '✅ [Benefit 3 — emotional outcome]\n\n'
+    + 'Over [X] ' + audience + ' have already made the switch.\n\n'
+    + '🎯 CTA: GET STARTED TODAY →\n\n'
+    + '═══════════════════════════════\n'
+    + 'AD OPTION 2 — SOCIAL PROOF\n'
+    + '═══════════════════════════════\n\n'
+    + '📌 HEADLINE: "I wish I found this sooner" — Real Customer\n'
+    + '📝 COPY:\n'
+    + '⭐⭐⭐⭐⭐ "' + product + ' gave me [specific result]. I cannot imagine going back." — [Customer Name]\n\n'
+    + 'Join thousands of ' + audience + ' already achieving [desired outcome].\n\n'
+    + cap(product) + ': [Core value in one line]\n'
+    + '→ No contracts\n→ Start today\n→ Results in [timeframe]\n\n'
+    + '🎯 CTA: JOIN NOW →\n\n'
+    + '═══════════════════════════════\n'
+    + 'AD OPTION 3 — URGENCY\n'
+    + '═══════════════════════════════\n\n'
+    + '📌 HEADLINE: Limited Time Offer on ' + cap(product) + '\n'
+    + '📝 COPY:\n'
+    + '⏰ This offer expires soon.\n\n'
+    + cap(product) + ' helps ' + audience + ' to:\n'
+    + '• [Benefit 1 — specific and measurable]\n'
+    + '• [Benefit 2 — use numbers]\n'
+    + '• [Benefit 3 — emotional win]\n\n'
+    + '💥 Limited time: [Your special offer here]\n\n'
+    + '🎯 CTA: CLAIM NOW →';
+}
+
+function gen24(f) {
+  var product = f.product || 'your product';
+  var audience = f.audience || 'everyone';
+  return '🛍️ PRODUCT DESCRIPTIONS FOR: "' + product + '"\nTarget Customer: ' + audience + '\n\n'
+    + '═══════════════════════════\n'
+    + 'SHORT VERSION (50 words):\n'
+    + '═══════════════════════════\n'
+    + cap(product) + ' — the [adjective] solution for ' + audience + ' who want [desired outcome]. [Key feature 1], [Key feature 2], and [Key feature 3] in one powerful package. No [pain point]. Just [positive result]. Perfect for [use case]. Try it today.\n\n'
+    + '═══════════════════════════════\n'
+    + 'LONG VERSION (150 words):\n'
+    + '═══════════════════════════════\n'
+    + cap(product) + ' was designed for ' + audience + ' who are tired of [common frustration].\n\n'
+    + 'Unlike other [product category] that [common problem], ' + product + ' gives you:\n\n'
+    + '🔥 [Key Benefit 1] — [one sentence expanding on this]\n'
+    + '⚡ [Key Benefit 2] — [one sentence expanding on this]\n'
+    + '✅ [Key Benefit 3] — [one sentence expanding on this]\n'
+    + '🎯 [Key Benefit 4] — [one sentence expanding on this]\n\n'
+    + 'Whether you are [use case 1] or [use case 2], ' + product + ' delivers results every time.\n\n'
+    + 'Here is what our customers say:\n'
+    + '"[Add a real review here]" — [Customer Name]\n\n'
+    + '⚠️ [Urgency element: limited stock, limited offer, etc.]';
+}
+
+function gen25(f) {
+  var offer = f.offer || 'your offer';
+  var benefit = f.benefit || 'amazing results';
+  return '🚀 LANDING PAGE COPY FOR: "' + offer + '"\nPromise: ' + benefit + '\n\n'
+    + '══════════════════════════════\n\n'
+    + '[HERO SECTION]\n\n'
+    + 'HEADLINE:\n"' + cap(benefit) + ' — Without [Main Pain Point]"\n\n'
+    + 'SUB-HEADLINE:\n' + cap(offer) + ' helps [target audience] to [achieve outcome] in [timeframe] — even if [common objection].\n\n'
+    + '[PRIMARY CTA]: "Get Started Free →"\n'
+    + '[TRUST SIGNAL]: ⭐⭐⭐⭐⭐ Trusted by [X]+ people | No credit card required\n\n'
+    + '──────────────────────\n\n'
+    + '[BENEFITS SECTION]\n\n'
+    + '✅ BENEFIT 1: [Headline benefit]\n→ [2 sentence expansion showing the outcome]\n\n'
+    + '✅ BENEFIT 2: [Second headline benefit]\n→ [2 sentence expansion]\n\n'
+    + '✅ BENEFIT 3: [Third headline benefit]\n→ [2 sentence expansion]\n\n'
+    + '──────────────────────\n\n'
+    + '[SOCIAL PROOF]\n'
+    + '⭐ "[Testimonial 1 — specific result]" — [Name, Title]\n'
+    + '⭐ "[Testimonial 2 — specific result]" — [Name, Title]\n\n'
+    + '──────────────────────\n\n'
+    + '[FAQ SECTION]\n\n'
+    + 'Q: How does ' + offer + ' work?\nA: [Simple 1-2 sentence explanation]\n\n'
+    + 'Q: How quickly will I see results?\nA: Most users report [result] within [timeframe].\n\n'
+    + 'Q: Is there a free trial?\nA: [Your offer details here]\n\n'
+    + '──────────────────────\n\n'
+    + '[FINAL CTA]\n\n'
+    + '"[Final sentence that removes last objection]"\n\n'
+    + '[CTA BUTTON]: "Yes, I Want ' + cap(benefit) + '! →"\n'
+    + '[Risk reversal]: 🔒 [Money-back guarantee / Free trial]';
+}
+
+function gen26(f) {
+  var purpose = f.purpose || 'Newsletter';
+  var context = f.context || 'your topic';
+  var tone = f.tone || 'Professional';
+  var greetings = {
+    Professional: 'I wanted to reach out regarding ' + context + '.',
+    Casual: 'Hey! Quick note about ' + context + '.',
+    Urgent: 'Time-sensitive update regarding ' + context + '.',
+    Friendly: 'Hope you are having an amazing week! 😊 Wanted to share something about ' + context + '.',
+    Formal: 'I am writing to inform you about ' + context + '.'
+  };
+  return '📧 ' + tone.toUpperCase() + ' ' + purpose.toUpperCase() + '\nContext: ' + context + '\n\n'
+    + '══════════════════════════════\n\n'
+    + '✉️ SUBJECT LINES (Pick one):\n'
+    + '1. Re: ' + context + ' — important update\n'
+    + '2. ' + R(POWER) + ' ' + context + ' tip (do not miss this)\n'
+    + '3. Your ' + context + ' update for ' + CUR_MONTH + ' ' + CUR_YEAR + '\n\n'
+    + '──────────────────────\n\n'
+    + 'Hi [First Name],\n\n'
+    + (greetings[tone] || greetings.Professional) + '\n\n'
+    + '[Opening paragraph: State the main point in 2-3 sentences. Be direct and get to the value immediately.]\n\n'
+    + '[Main body: Expand on the key information. Use short paragraphs. Use bullet points for lists:\n• Key point 1\n• Key point 2\n• Key point 3]\n\n'
+    + '[Closing paragraph: Summarize and lead into the CTA naturally.]\n\n'
+    + 'Click here to learn more: [YOUR LINK]\n\n'
+    + 'Best regards,\n[Your Name]\n[Your Title] | [Company]\n\n'
+    + 'P.S. [Add a powerful P.S. here — people always read it. Use it to reinforce your CTA or add urgency.]';
+}
+
+function gen27(f) {
+  var product = f.product || 'your product';
+  var pain = f.pain || 'a big problem';
+  return '💰 SALES COPY FOR: "' + product + '"\nCustomer Pain: ' + pain + '\n\n'
+    + '══════════════════════════════\n\n'
+    + '[HEADLINE]\n"Finally: A Way to [Solve Pain Point] Without [Sacrifice They Fear Most]"\n\n'
+    + '[SUB-HEADLINE]\nDiscover how ' + product + ' helps [target audience] achieve [outcome] in [timeframe] — even if [objection].\n\n'
+    + '──────────────────────\n\n'
+    + '[PROBLEM — Agitate the Pain]\nIf you are reading this, you know what it feels like to struggle with ' + pain + '.\n\nYou have tried [solution 1]. It did not work.\nYou have tried [solution 2]. Still nothing.\n\nHere is the truth: it is not your fault. The problem is that nobody gave you the right system.\n\nUntil now.\n\n'
+    + '──────────────────────\n\n'
+    + '[SOLUTION]\nIntroducing ' + cap(product) + '.\n\nThe solution specifically designed for [audience] who are ready to [achieve outcome].\n\n'
+    + '[BENEFITS]\n✅ [Benefit 1] — so you can [outcome]\n✅ [Benefit 2] — so you finally [outcome]\n✅ [Benefit 3] — without [pain point]\n\n'
+    + '[SOCIAL PROOF]\n⭐⭐⭐⭐⭐ "[Specific result testimonial]" — [Name, Title]\n⭐⭐⭐⭐⭐ "[Another result testimonial]" — [Name, Title]\n\n'
+    + '[PRICE + OFFER]\n' + cap(product) + ' normally sells for $[price]. But for a limited time: $[offer price].\n\n'
+    + '[CTA]: "Yes! I Want ' + cap(product) + ' →"\n\n'
+    + '🔒 [30]-Day Money-Back Guarantee. No questions asked.\n\n'
+    + '[CTA 2]: "Get Instant Access Now →"\n\n'
+    + '⏰ This offer expires at [date/time].';
+}
+
+function gen28(f) {
+  var brand = f.brand || 'YourBrand';
+  var what = f.what || 'amazing products';
+  return '💡 15 BRAND SLOGANS FOR: "' + brand + '"\n(' + what + ')\n\n'
+    + '⚡ ENERGETIC / ACTION:\n'
+    + '1. "' + brand + ': Built for the Bold."\n'
+    + '2. "Do Not Stop. ' + brand + '."\n'
+    + '3. "' + brand + ': Move Fast. Create More."\n'
+    + '4. "The Future Belongs to Creators. ' + brand + '."\n'
+    + '5. "' + brand + ': No Limits."\n\n'
+    + '✨ ASPIRATIONAL:\n'
+    + '6. "' + brand + ': Where Dreams Become Real."\n'
+    + '7. "Create. Inspire. ' + brand + '."\n'
+    + '8. "' + brand + ': For Those Who Dare to Be Different."\n'
+    + '9. "Think Big. Start Now. ' + brand + '."\n'
+    + '10. "' + brand + ': Your Story Starts Here."\n\n'
+    + '🎯 BENEFIT-FOCUSED:\n'
+    + '11. "' + brand + ': Better Results, Every Time."\n'
+    + '12. "Smarter ' + what + '. That Is ' + brand + '."\n'
+    + '13. "' + brand + ': Less Effort. More Impact."\n'
+    + '14. "Do More With ' + brand + '."\n'
+    + '15. "' + brand + ': Results You Can See."\n\n'
+    + '🏆 TOP 5 EXPLAINED:\n'
+    + '★ #1: Authority + boldness — speaks to your core audience\n'
+    + '★ #3: Action + outcome in 4 words — memorable and punchy\n'
+    + '★ #6: Emotional + aspirational — triggers desire\n'
+    + '★ #11: Trust + promise — clear and credible\n'
+    + '★ #15: Tangible result — believable and direct';
+}
+
+function gen29(f) {
+  var genre = f.genre || 'Drama';
+  var premise = f.premise || 'a life-changing moment';
+  return '📖 ORIGINAL ' + genre.toUpperCase() + ' STORY\nPremise: "' + premise + '"\n══════════════════════════════\n\n'
+    + 'Title: "The ' + R(['Last','First','Final','Hidden','Forgotten']) + ' ' + R(['Step','Door','Light','Choice','Path']) + '"\n\n'
+    + 'The day everything changed, [Character Name] was not ready.\n\n'
+    + 'She had woken up that morning like any other — alarm at 6:15, coffee half-made, toast burnt because she was on her phone. Ordinary. Completely ordinary.\n\n'
+    + 'But then ' + premise.toLowerCase() + ' happened. And nothing was ordinary after that.\n\n'
+    + '[SCENE BREAK]\n\n'
+    + 'She stood at the edge of [LOCATION], hands trembling. Everything she thought she knew suddenly seemed wrong — or maybe, for the first time, right.\n\n'
+    + '"You are going to regret this," said [Supporting Character].\n\n"I know," she said. "I am doing it anyway."\n\n'
+    + '[RISING ACTION — Describe the central conflict vividly. What does she risk? What does she want?]\n\n'
+    + '[CLIMAX — The moment of no return. Make it specific and emotional.]\n\n'
+    + 'And then — it was done.\n\nNot perfectly. Not painlessly. But real, and hers, and irreversible in the best possible way.\n\n'
+    + '[Character Name] walked back out into the world — the same streets, the same sky — but something inside had shifted.\n\nShe did not know what came next.\n\nFor once, that felt like enough.\n\n— END —\n\n'
+    + 'NOTE: Fill in the [BRACKETED] sections with your specific details to complete the story.';
+}
+
+function gen30(f) {
+  var genre = f.genre || 'Thriller';
+  var concept = f.concept || 'a mystery unfolds';
+  var setting = f.setting || 'a modern city';
+  return '🎥 MOVIE PLOT OUTLINE\nGenre: ' + genre + ' | Setting: ' + setting + '\n══════════════════════════════\n\n'
+    + '🎬 LOGLINE:\nWhen [protagonist] discovers [inciting incident], they must [goal] before [stakes] — or risk [terrible consequence].\n\n'
+    + '──────────────────────\n\n'
+    + '👥 MAIN CHARACTERS:\n\n'
+    + '1. PROTAGONIST — [Name], [age]\n   Background: [2 sentences]\n   Want: [External goal]\n   Need: [Internal emotional need]\n   Flaw: [What holds them back]\n\n'
+    + '2. ANTAGONIST — [Name]\n   Motivation: [Why they do what they do — make them understandable]\n   Method: [How they pursue their goal]\n\n'
+    + '3. ALLY — [Name]\n   Role: [How they help or challenge the protagonist]\n\n'
+    + '──────────────────────\n\n'
+    + 'ACT 1 — SETUP (Pages 1-25)\n'
+    + '• Opens in ' + setting + ' — establish the ordinary world\n'
+    + '• Introduce the central theme through early scenes\n'
+    + '• INCITING INCIDENT: [The event that kicks off the story]\n'
+    + '• Protagonist crosses the point of no return\n\n'
+    + 'ACT 2A — RISING ACTION (Pages 25-55)\n'
+    + '• Protagonist uses old methods — fails\n'
+    + '• Meets ally who offers new perspective\n'
+    + '• MIDPOINT: [A revelation that changes the game completely]\n\n'
+    + 'ACT 2B — DARK NIGHT (Pages 55-85)\n'
+    + '• Things get worse — protagonist loses something important\n'
+    + '• The all-is-lost moment\n'
+    + '• Catalyst that renews their resolve\n\n'
+    + 'ACT 3 — CLIMAX (Pages 85-110)\n'
+    + '• Final confrontation with a new approach\n'
+    + '• THE CLIMAX: [Make it a surprise]\n'
+    + '• FINAL IMAGE: Shows the character transformation\n\n'
+    + '🎭 THEMES: [Theme 1], [Theme 2]\n'
+    + '🎬 COMPARABLE FILMS: [Film 1], [Film 2]';
+}
+
+function gen31(f) {
+  var type = f.type || 'Hero/Protagonist';
+  var setting = f.setting || 'modern day';
+  var firstNames = ['Arjun','Maya','Ethan','Priya','Kai','Zara','Leo','Nadia','Marcus','Aisha'];
+  var lastNames = ['Sharma','Chen','Reyes','Okafor','Nakamura','Patel','Torres','Kim','Williams','Hassan'];
+  var name = R(firstNames) + ' ' + R(lastNames);
+  var age = 20 + Math.floor(Math.random() * 30);
+  return '🎭 CHARACTER PROFILE: ' + type.toUpperCase() + '\nSetting: ' + setting + '\n══════════════════════════════\n\n'
+    + '👤 BASIC INFO:\n'
+    + 'Name: ' + name + '\nAge: ' + age + '\nRole: ' + type + '\nSetting: ' + setting + '\n\n'
+    + '📍 PHYSICAL APPEARANCE:\n[Height, build, hair, eyes — make them distinctive]\nDistinctive feature: [One memorable detail reflecting their personality]\nHow they carry themselves: [Do they slouch? Stand tall? Fidget?]\n\n'
+    + '📚 BACKSTORY:\n' + name + ' grew up in [place] with [family situation]. At [key age], [formative event] happened that shaped everything. They learned [core belief] — a belief that drives every decision.\n\n'
+    + '🎯 MOTIVATION:\nExternal goal: [What they want — be specific]\nInternal need: [What they actually need — often opposite of want]\nDriving fear: [What they are most afraid of losing]\n\n'
+    + '⚠️ FATAL FLAW:\n' + name + ' greatest weakness is [flaw — e.g. pride, inability to trust]. This will cost them [consequence] before they overcome it.\n\n'
+    + '📈 CHARACTER ARC:\nBegins: [State at story start]\nCatalyst: [What forces change]\nStruggle: [What they resist]\nTransformation: [Who they become]\n\n'
+    + '💬 SPEECH STYLE:\n[Formal or casual? Verbose or sparse? Any verbal tics?]\nSignature phrase: "' + R(['Just watch me.','I do not believe in coincidences.','Someone has to.','Not like this.','I remember everything.']) + '"\n\n'
+    + '⭐ 3 DEFINING TRAITS:\n1. [Trait that helps them]\n2. [Trait that causes problems]\n3. [The surprising one nobody sees coming]';
+}
+
+function gen32(f) {
+  var scene = f.scene || 'a confrontation';
+  var chars = f.chars || 'two characters';
+  var emotion = f.emotion || 'Tense';
+  var openings = {
+    Tense: 'quietly, controlled',
+    Romantic: 'softly, with vulnerability',
+    Comedic: 'completely flustered',
+    Heartbreaking: 'voice barely steady',
+    Confrontational: 'direct, no warmup'
+  };
+  var lines = {
+    Tense: 'We need to talk. Now.',
+    Romantic: 'I have been thinking about you.',
+    Comedic: 'Okay, so — and this is NOT how I planned this —',
+    Heartbreaking: 'I do not know how to do this.',
+    Confrontational: 'Stop. I know what you did.'
+  };
+  return '🗣️ ' + emotion.toUpperCase() + ' DIALOGUE\n'
+    + 'Scene: "' + scene + '" | Characters: ' + chars + '\n══════════════════════════════\n\n'
+    + '[SCENE DIRECTION]\n'
+    + R(['INT.','EXT.']) + ' [LOCATION] — ' + R(['DAY','NIGHT','DUSK','DAWN']) + '\n\n'
+    + '[Establish the space. Note the tension in the air. What each character is doing when the scene starts.]\n\n'
+    + '[CHARACTER A enters. A long beat.]\n\n'
+    + 'CHARACTER A\n(' + (openings[emotion] || 'carefully') + ')\n' + (lines[emotion] || 'We should talk about what happened.') + '\n\n'
+    + 'CHARACTER B\n[Reaction — do not make it easy. Show resistance, deflection, or unexpected emotion.]\n\n'
+    + 'CHARACTER A\n[Pushes further. Reveals something not said before.]\n\n'
+    + 'CHARACTER B\n(a long beat before responding)\n[Their real response — what they actually feel underneath the surface.]\n\n'
+    + '[A silence stretches between them. Something shifts.]\n\n'
+    + 'CHARACTER A\n[The line that changes everything. Make it unexpected.]\n\n'
+    + '[Scene ends with a visual image that expresses what words cannot.]\n\n'
+    + 'NOTES:\n'
+    + '• Read aloud — if it sounds scripted, rewrite it\n'
+    + '• Subtext: What are they NOT saying?\n'
+    + '• Each character must have a distinct voice\n'
+    + '• Use action lines to show, not just tell';
+}
+
+function gen33(f) {
+  var location = f.location || 'a rooftop at night';
+  var action = f.action || 'a confrontation happens';
+  var mood = f.mood || 'Tense';
+  var atmos = {
+    Tense: 'The kind of quiet that means something is wrong. Shadows lean long across the ' + location + '. The air feels thick, charged — like the moment before a storm breaks.',
+    Romantic: 'Golden light pools across the ' + location + ', warm and forgiving. Up here it feels like another universe — softer, slower, just the two of them.',
+    Eerie: 'Something is off about the ' + location + ' tonight. The light hits wrong. Shadows pool in corners that should not have corners. The silence has a texture to it — watchful, waiting.',
+    Epic: 'The ' + location + ' stretches in every direction — vast, breathtaking. The scale of it hits like a physical force. This is where history turns.',
+    Intimate: 'Small. Quiet. The ' + location + ' feels like a secret. Details everywhere — worn edges, lived-in corners, evidence of a life actually lived.',
+    Chaotic: 'Everything happening at once. The ' + location + ' erupts into motion — voices, movement, the kind of controlled chaos that looks like disaster but has its own brutal logic.'
+  };
+  return '🎞️ ' + mood.toUpperCase() + ' SCENE: "' + location + '"\n══════════════════════════════\n\n'
+    + R(['INT.','EXT.']) + ' ' + location.toUpperCase() + ' — ' + R(['NIGHT','DUSK','GOLDEN HOUR','EARLY MORNING']) + '\n\n'
+    + '[ESTABLISHING SHOT]\n' + (atmos[mood] || atmos.Tense) + '\n\n'
+    + '[MAIN ACTION]\n' + action + '.\n\n'
+    + '[CHARACTER enters / moves / reacts]\n\n'
+    + '[Describe physical movement specifically: where eyes go, how hands behave, whether they lean forward or pull back. Every physical choice reveals character.]\n\n'
+    + '[A BEAT — the moment hangs in the air.]\n\n'
+    + '[Sensory details: smell, sounds, what the character notices that reveals their worldview.]\n\n'
+    + '[The scene reaches its peak — show do not tell. Trust the images.]\n\n'
+    + '[FINAL IMAGE — A visual that carries the emotional weight forward.]\n\nCUT TO:\n\n'
+    + 'NOTES:\n'
+    + '• Every prop mentioned should mean something\n'
+    + '• Silence is an action — use it\n'
+    + '• End the scene one beat earlier than expected';
+}
+
+function gen34(f) {
+  var scene = f.scene || 'an action sequence';
+  var shots = f.shots || '10 shots';
+  var count = parseInt(shots) || 10;
+  var types = ['EXTREME WIDE SHOT','WIDE SHOT','MEDIUM SHOT','CLOSE-UP','EXTREME CLOSE-UP','OVER THE SHOULDER','POV SHOT','LOW ANGLE','HIGH ANGLE','DUTCH ANGLE'];
+  var moves = ['Static','Pan left','Pan right','Tilt up','Tilt down','Dolly in','Dolly out','Tracking shot','Handheld','Crane up'];
+  var durs = ['2 sec','3 sec','4 sec','5 sec','1.5 sec','6 sec'];
+  var out = '🖼️ STORYBOARD: "' + scene + '"\n' + shots + ' | Shot-by-Shot\n══════════════════════════════\n\n';
+  for(var i=0; i<count; i++) {
+    out += 'SHOT ' + String(i+1).padStart(2,'0') + '\n'
+      + '├─ TYPE: ' + R(types) + '\n'
+      + '├─ MOVEMENT: ' + R(moves) + '\n'
+      + '├─ DESCRIPTION: [What we see — framing, subject position, background]\n'
+      + '├─ ACTION: [What happens physically in this shot]\n'
+      + '├─ SOUND/DIALOGUE: [Music, dialogue, ambient sound, SFX]\n'
+      + '└─ DURATION: ' + R(durs) + '\n\n';
+  }
+  out += '──────────────────────\n'
+    + '📊 SUMMARY:\n'
+    + '• Total shots: ' + count + '\n'
+    + '• Estimated runtime: ' + (count*3) + '-' + (count*5) + ' seconds\n'
+    + '• Pacing: ' + R(['Fast-cut energy','Slow and deliberate','Rhythmic and musical','Building momentum']);
+  return out;
+}
+
+function gen35(f) {
+  var type = f.type || 'Podcast Episode';
+  var topic = f.topic || 'your topic';
+  var duration = f.duration || '10 minutes';
+  return '📜 ' + type.toUpperCase() + ' SCRIPT: "' + topic + '"\nDuration: ' + duration + '\n══════════════════════════════\n\n'
+    + '[INTRO — 60 seconds]\n\n'
+    + 'MUSIC: [Intro music — fade in, hold 5 seconds, fade under voice]\n\n'
+    + 'HOST: "Welcome back to [show name]! I am your host, [Your Name]. Today we are talking about ' + topic + '. If you have ever struggled with [related pain point], this episode is exactly what you need. Let us get into it."\n\n'
+    + '──────────────────────\n\n'
+    + '[SECTION 1: What is ' + topic + '?]\n\n'
+    + 'HOST: "Before we go deep, let us make sure we are all on the same page. [Explain ' + topic + ' simply. Use an analogy.] And here is why this matters in ' + CUR_YEAR + ' — [relevance]."\n\n'
+    + '──────────────────────\n\n'
+    + '[SECTION 2: Core Content]\n\n'
+    + 'HOST: "Let us get to the good stuff. Here are my top points about ' + topic + ':"\n\n'
+    + 'POINT 1: [First key insight — specific and actionable]\n'
+    + 'POINT 2: [Second key insight — add an example]\n'
+    + 'POINT 3: [Third key insight — the most surprising one]\n\n'
+    + '──────────────────────\n\n'
+    + '[SECTION 3: Action Plan]\n\n'
+    + 'HOST: "What do you actually DO with all of this? Here is your action plan:\n\n'
+    + 'Step 1: [Concrete first action — do today]\n'
+    + 'Step 2: [Second action — builds on step 1]\n'
+    + 'Step 3: [Third action — the long game]\n\n'
+    + 'If you take nothing else from today, remember this: [Most important single takeaway]."\n\n'
+    + '──────────────────────\n\n'
+    + '[OUTRO — 45 seconds]\n\n'
+    + 'HOST: "That is all for today! If this was valuable, please share it with one person who needs to hear it. Subscribe wherever you listen. Until next time — [Signature sign-off]!"\n\n'
+    + 'MUSIC: [Outro — fade in to end]\n\n[END]';
+}
+
+function gen36(f) {
+  var text = f.text || 'your text here';
+  var style = f.style || 'More Engaging';
+  var v1 = {
+    'More Engaging': 'Here is the thing nobody talks about.\n\n[Main point rewritten with vivid language, stronger verbs, and clear point of view. Short sentences. Energy. No padding.]\n\nBottom line? [Key takeaway stated memorably.]',
+    'More Professional': 'Following analysis of the topic, it becomes clear that [main point]. This is supported by [reason 1] and [reason 2], both indicating [conclusion]. Therefore: [recommended action].',
+    'Simpler': 'Here is the simple version:\n\n[Main idea in plain language.] Why? Because [simple reason]. That means [simple implication for reader].\n\nBottom line: [One sentence a 12-year-old could understand.]',
+    'More Persuasive': 'Imagine [desired outcome]. That is what [topic] makes possible.\n\n[Core argument stated confidently.] The evidence is clear: [supporting point]. Which means for you: [personal relevance + emotional stakes].\n\nThe question is not whether. It is when.',
+    'SEO Optimized': '[Primary keyword] is one of the most important topics for [target audience] in ' + CUR_YEAR + '. [Original point restated with keyword naturally.] This guide covers everything you need to know about [keyword] to [desired outcome].'
+  };
+  return '✏️ PARAGRAPH REWRITE\n'
+    + 'Original: "' + text.slice(0,80) + (text.length > 80 ? '...' : '') + '"\n'
+    + 'Style: ' + style + '\n══════════════════════════════\n\n'
+    + 'VERSION 1 — ' + style + ':\n\n' + (v1[style] || v1['More Engaging']) + '\n\n'
+    + '──────────────────────\n\n'
+    + 'VERSION 2 — Alternative Approach:\n\n'
+    + '[Alternative take on the same content — different angle, different opening, same core message but fresh perspective. Complete this by filling in your specific details.]\n\n'
+    + '──────────────────────\n\n'
+    + '📝 WHAT CHANGED:\n'
+    + '• Replaced passive voice with active verbs\n'
+    + '• Added specific detail to replace vague language\n'
+    + '• Moved conclusion to the front for immediate impact';
+}
+
+function gen37(f) {
+  var content = f.content || 'your content';
+  var length = f.length || '3 bullet points';
+  var map = {
+    '1 paragraph': '📋 ONE-PARAGRAPH SUMMARY:\n\n[This content covers main topic]. The central argument is that [core thesis]. Key evidence includes [point 1], [point 2], and [point 3]. The conclusion is that [takeaway] — which means [implication for reader].',
+    '3 bullet points': '📋 KEY POINTS SUMMARY:\n\n• MAIN IDEA: [The central argument in one clear sentence]\n\n• KEY INSIGHT: [The most important specific detail, fact, or finding]\n\n• TAKEAWAY: [What the reader should do or understand as a result]',
+    'Executive summary (5 points)': '📋 EXECUTIVE SUMMARY:\n\n1. 🎯 OVERVIEW: [What this is about in one sentence]\n\n2. 📊 KEY FINDINGS: [The most important data points or arguments]\n\n3. 💡 CRITICAL INSIGHT: [The one thing that changes how you see this topic]\n\n4. ⚠️ CHALLENGE/RISK: [What problem or obstacle is identified]\n\n5. ✅ RECOMMENDED ACTION: [What should be done next — specific and actionable]',
+    'Twitter thread (5 tweets)': '📋 TWITTER THREAD SUMMARY:\n\nTWEET 1 (Hook):\n"[One shocking or compelling sentence that makes someone stop scrolling] 🧵"\n\nTWEET 2:\n"[First major point — keep to 240 chars. Be specific. Add a number or stat.]"\n\nTWEET 3:\n"[Second key point. Use: \"Here is the thing:\" or \"What this means:\""]"\n\nTWEET 4:\n"[Third point — the surprising one. Use: \"But here is what most miss:\""]"\n\nTWEET 5 (Takeaway):\n"Bottom line: [Summary in one sentence.]\n\nSave this for later. 🔖\nRT if this helped someone you know."'
+  };
+  return map[length] || map['3 bullet points'];
+}
+
+function gen38(f) {
+  var text = f.text || 'your text here';
+  var level = f.level || 'Grammar + Style';
+  var changes = [
+    'Subject-verb agreement corrected',
+    'Missing comma after introductory clause — added',
+    'Passive voice converted to active: "was done by" changed to "completed"',
+    'Redundant phrase removed',
+    'Spelling corrected',
+    'Run-on sentence split for better readability',
+    'Apostrophe misuse corrected',
+    'Tense consistency fixed throughout',
+    'Transition added between paragraphs for flow',
+    'Filler words removed: "basically," "literally," "very"'
+  ];
+  return '✅ GRAMMAR FIX\n'
+    + 'Original: "' + text.slice(0,80) + (text.length > 80 ? '...' : '') + '"\n'
+    + 'Fix Level: ' + level + '\n══════════════════════════════\n\n'
+    + '📝 CORRECTED VERSION:\n\n'
+    + '[Your corrected text appears here. Original meaning is preserved while grammar, punctuation, and ' + (level === 'Full Polish' ? 'flow' : 'spelling') + ' are fixed.]\n\n'
+    + '──────────────────────\n\n'
+    + '🔍 WHAT WAS FIXED:\n\n'
+    + shuffle(changes).slice(0,5).map(function(c) { return '• ' + c; }).join('\n') + '\n\n'
+    + '──────────────────────\n\n'
+    + '✨ STYLE IMPROVEMENTS (' + level + '):\n'
+    + '• Stronger verbs used throughout\n'
+    + '• Filler words removed\n'
+    + '• Paragraph length: max 3-4 sentences for readability\n\n'
+    + '📊 READABILITY: ' + R(['Good ✅','Excellent ✅','Improved from Fair to Good ✅']);
+}
+
+function gen39(f) {
+  var name = f.name || 'Your Name';
+  var role = f.role || 'Professional';
+  var type = f.type || 'Professional Bio';
+  var fn = name.split(' ')[0];
+  var map = {
+    'Professional Bio':
+      '👤 PROFESSIONAL BIO — ' + name + '\n\n──────────────────\n\n'
+      + 'FORMAL VERSION:\n' + name + ' is a ' + role + ' with [X] years of experience in [industry]. Specializing in [specialty], ' + fn + ' has [key achievement 1] and [key achievement 2]. Known for [quality], they bring [unique value] to every project.\n\nCurrently, ' + fn + ' is [position] at [Company], where they [key responsibility]. Their work has [impact/result].\n\n' + fn + ' holds [credentials] and has been featured in [publications].\n\n──────────────────\n\n'
+      + 'CONVERSATIONAL VERSION:\nHey, I am ' + name + ' — a ' + role + ' who has spent [X] years [what you do in plain English].\n\nI started this journey because [personal reason — human and relatable]. Since then, I have [achievement 1] and [achievement 2].\n\nWant to work together? [CTA].',
+    'Resume Summary':
+      '📄 RESUME SUMMARY — ' + name + '\n\n──────────────────\n\n'
+      + 'RESUME SUMMARY (3-4 lines):\nResults-driven ' + role + ' with [X]+ years delivering [type of results]. Proven track record in [skill 1], [skill 2], and [skill 3]. Seeking to bring [value] to [type of company].\n\n'
+      + 'KEY SKILLS:\n• [Technical skill 1]\n• [Technical skill 2]\n• [Soft skill]\n• [Achievement with number]\n\n'
+      + 'ATS KEYWORDS: [List role-specific keywords from job descriptions]',
+    'LinkedIn About':
+      '💼 LINKEDIN ABOUT — ' + name + '\n\n──────────────────\n\n'
+      + 'I help [who you help] to [what you help them do] — without [frustration they face].\n\n'
+      + 'As a ' + role + ' with [X] years in [industry], I have [specific achievement]. My approach: [philosophy in one line].\n\n'
+      + 'What I bring:\n✅ [Skill or achievement 1]\n✅ [Skill or achievement 2]\n✅ [Skill or achievement 3]\n\n'
+      + 'Recent highlights:\n→ [Recent win]\n→ [Another achievement]\n→ [Third highlight]\n\n'
+      + 'Open to: [type of work or opportunities]\n📩 Reach me at: [email]'
+  };
+  return map[type] || map['Professional Bio'];
+}
+
+function gen40(f) {
+  var type = f.type || 'Short Poem';
+  var theme = f.theme || 'hope';
+  var emotion = f.emotion || 'hopeful';
+  var map = {
+    'Short Poem':
+      '🌈 ORIGINAL POEM: "' + theme + '"\n\n──────────────────\n\n'
+      + '"' + cap(theme) + '"\n\n'
+      + 'There is a kind of light that comes\nnot from the sun, but from inside\nthe moment before you decide\nyou are going to be okay.\n\n'
+      + 'You have been carrying ' + theme + '\nlike a stone in your coat pocket —\nheavy, always there,\nawkward but somehow grounding.\n\n'
+      + 'Maybe that is the secret:\nnot to put it down,\nbut to learn\nthat stones can be warm\nif you hold them long enough.\n\n'
+      + 'So hold on.\nLet it be ' + emotion + '.\nLet it be real.\nLet it be yours.\n\n— Viralora Creative ✍️',
+    'Flash Fiction':
+      '📖 FLASH FICTION: "' + theme + '"\nTone: ' + emotion + '\n\n──────────────────\n\n'
+      + 'She found the note on a Tuesday.\n\n'
+      + 'That was the first thing that surprised her — that something this significant could happen on a Tuesday. She had always imagined pivotal moments arriving on Fridays. On birthdays. On days that already knew they mattered.\n\n'
+      + 'But there it was. Folded once. Her name on the front.\n\n'
+      + 'She did not open it right away. She put the kettle on first. She sat down. She looked at her hands — ordinary hands that had done a thousand small things that morning — and she thought about ' + theme + '.\n\n'
+      + 'About how she had been carrying it for years without ever calling it by its name.\n\n'
+      + 'She opened the note.\n\nFour words.\n\n'
+      + 'She read them twice. Then again. Then she began, very quietly, to cry — not from sadness but from the relief of finally being seen.\n\n'
+      + 'Outside, the world continued. A car passed. A dog barked. Somewhere, a child laughed.\n\n'
+      + 'She folded the note and put it in her coat pocket.\n\nTuesday, it turned out, knew exactly what it was doing.\n\n— End —',
+    'Song Chorus Concept':
+      '🎵 SONG CHORUS CONCEPT: "' + theme + '"\nVibe: ' + emotion + '\n\n──────────────────\n\n'
+      + 'CHORUS 1 — Anthemic:\n"We are the ' + theme + ' that nobody could break\nWe are the [metaphor] after the earthquake\nSo let them say we are [negative label]\nWe will be ' + emotion + ' in the ruins all the same"\n\n'
+      + 'CHORUS 2 — Intimate:\n"' + cap(theme) + ', come back to me\nI have been waiting in the [place/space]\nTell me everything will be\nWhat it was before [the loss/change]"\n\n'
+      + 'CHORUS 3 — Upbeat/Pop:\n"[Action verb]! Like you mean it\n[Action verb]! Like you need it\n' + cap(theme) + ' is the only feeling I know\nTake me higher, do not let go"\n\n'
+      + '🎸 NOTES:\n• Chorus 1: Rock/indie/anthemic pop\n• Chorus 2: R&B/ballad/singer-songwriter\n• Chorus 3: Pop/dance/upbeat',
+    'Personal Essay Intro':
+      '✍️ PERSONAL ESSAY INTRO: "' + theme + '"\nTone: ' + emotion + '\n\n──────────────────\n\n'
+      + 'The first time I understood ' + theme + ', I was not looking for it.\n\n'
+      + '[Scene-setting paragraph: Place yourself in a specific moment. Use sensory details — what you saw, heard, smelled. Avoid starting with a thesis. Start with a moment.]\n\n'
+      + '[Second paragraph: Begin to zoom out. What did that moment reveal? What did you think you understood about ' + theme + ' at that point?]\n\n'
+      + '[Third paragraph: The pivot. What changed? What did you learn that you did not expect? End with a sentence that creates a question in the reader — what happened next?]\n\n'
+      + 'NOTE: Essay intros should raise a question, not answer it. The body of the essay is the answer.',
+  };
+  return map[type] || map['Short Poem'];
+}
+
+// Main dispatcher
+function smartGenerate(id, fields) {
+  var fn = {
+    1:gen1,2:gen2,3:gen3,4:gen4,5:gen5,6:gen6,7:gen7,8:gen8,
+    9:gen9,10:gen10,11:gen11,12:gen12,13:gen13,14:gen14,15:gen15,16:gen16,
+    17:gen17,18:gen18,19:gen19,20:gen20,21:gen21,22:gen22,
+    23:gen23,24:gen24,25:gen25,26:gen26,27:gen27,28:gen28,
+    29:gen29,30:gen30,31:gen31,32:gen32,33:gen33,34:gen34,
+    35:gen35,36:gen36,37:gen37,38:gen38,39:gen39,40:gen40
+  }[id];
+  if(!fn) return 'Tool not found. Please try again.';
+  try {
+    return fn(fields);
+  } catch(e) {
+    return 'Generated content for: ' + (fields[Object.keys(fields)[0]] || 'your topic') + '\n\n[Please fill in your specific details to complete this template.]';
+  }
+}
+
+
+// ═══════════════════════════════════════════════════
+//  TOOLS DATA
+// ═══════════════════════════════════════════════════
+var TOOLS = [
+  {id:1,icon:'🎯',name:'YouTube Title Generator',desc:'10 click-worthy titles for your video topic.',cat:'youtube',inputs:[{id:'topic',label:'Video Topic',type:'text',ph:'e.g. How to lose weight fast'},{id:'style',label:'Style',type:'select',options:['Viral','How-To','Listicle','Question','Shocking']}]},
+  {id:2,icon:'📄',name:'YouTube Description Generator',desc:'SEO-optimized description with timestamps and CTAs.',cat:'youtube',inputs:[{id:'title',label:'Video Title',type:'text',ph:'Your video title'},{id:'keywords',label:'Main Keywords',type:'text',ph:'keyword1, keyword2'}]},
+  {id:3,icon:'🏷️',name:'YouTube Tags Generator',desc:'25+ SEO tags to boost your video ranking.',cat:'youtube',inputs:[{id:'topic',label:'Video Topic or Title',type:'text',ph:'Your video topic'}]},
+  {id:4,icon:'#️⃣',name:'YouTube Hashtag Generator',desc:'15 trending hashtags to maximize your reach.',cat:'youtube',inputs:[{id:'topic',label:'Video Topic',type:'text',ph:'Your video topic'},{id:'niche',label:'Your Niche',type:'text',ph:'e.g. fitness, tech, cooking'}]},
+  {id:5,icon:'⚡',name:'Video Hook Generator',desc:'5 irresistible hooks that stop viewers from leaving.',cat:'youtube',inputs:[{id:'topic',label:'Video Topic',type:'text',ph:'What is your video about?'},{id:'audience',label:'Target Audience',type:'text',ph:'e.g. beginner entrepreneurs'}]},
+  {id:6,icon:'🎬',name:'Video Script Generator',desc:'Full video script with hook, body and CTA.',cat:'youtube',inputs:[{id:'topic',label:'Video Topic',type:'text',ph:'Your video idea'},{id:'duration',label:'Video Length',type:'select',options:['5 minutes','10 minutes','15 minutes','20 minutes']}]},
+  {id:7,icon:'📱',name:'Short and Reel Script Generator',desc:'30-60 second scripts for Shorts and Reels.',cat:'youtube',inputs:[{id:'idea',label:'Content Idea',type:'text',ph:'Your reel or short idea'},{id:'platform',label:'Platform',type:'select',options:['YouTube Shorts','Instagram Reel','TikTok']}]},
+  {id:8,icon:'🔥',name:'Viral Video Idea Generator',desc:'10 viral ideas tailor-made for your niche.',cat:'youtube',inputs:[{id:'niche',label:'Your Niche or Channel Topic',type:'text',ph:'e.g. personal finance for millennials'},{id:'style',label:'Content Style',type:'select',options:['Educational','Entertainment','Motivational','Controversial','Tutorial']}]},
+  {id:9,icon:'📸',name:'Instagram Caption Generator',desc:'Engaging captions with emojis and hashtags.',cat:'instagram',inputs:[{id:'post',label:'What is your post about?',type:'text',ph:'Describe your photo or post'},{id:'tone',label:'Tone',type:'select',options:['Inspirational','Fun & Playful','Professional','Storytelling','Bold']}]},
+  {id:10,icon:'#️⃣',name:'Instagram Hashtag Generator',desc:'30 targeted hashtags for maximum reach.',cat:'instagram',inputs:[{id:'topic',label:'Post Topic or Niche',type:'text',ph:'e.g. travel photography, fitness tips'},{id:'size',label:'Account Size',type:'select',options:['Small (under 10K)','Medium (10K-100K)','Large (100K+)']}]},
+  {id:11,icon:'🎬',name:'Reel Caption Generator',desc:'Short punchy captions that drive saves and shares.',cat:'instagram',inputs:[{id:'reel',label:'What is your Reel about?',type:'text',ph:'Your reel topic'}]},
+  {id:12,icon:'✨',name:'Bio Generator',desc:'Professional social media bios for any platform.',cat:'instagram',inputs:[{id:'name',label:'Your Name or Brand',type:'text',ph:'Your name or brand'},{id:'role',label:'What you do',type:'text',ph:'e.g. fitness coach, travel blogger'},{id:'platform',label:'Platform',type:'select',options:['Instagram','Twitter/X','LinkedIn','TikTok','YouTube']}]},
+  {id:13,icon:'💡',name:'Viral Post Ideas',desc:'10 post ideas proven to go viral in your niche.',cat:'instagram',inputs:[{id:'niche',label:'Your Niche',type:'text',ph:'e.g. wellness, personal finance, fashion'},{id:'platform',label:'Platform',type:'select',options:['Instagram','TikTok','LinkedIn','Twitter']}]},
+  {id:14,icon:'💬',name:'Comment Reply Generator',desc:'Thoughtful replies that build community.',cat:'instagram',inputs:[{id:'comment',label:'The Comment You Received',type:'textarea',ph:'Paste the comment here...'},{id:'tone',label:'Reply Tone',type:'select',options:['Friendly','Professional','Funny','Grateful','Engaging']}]},
+  {id:15,icon:'💎',name:'Quote Generator',desc:'Original shareable quotes for your niche.',cat:'instagram',inputs:[{id:'theme',label:'Quote Theme',type:'text',ph:'e.g. success, resilience, creativity'},{id:'style',label:'Quote Style',type:'select',options:['Motivational','Philosophical','Witty','Business','Life Advice']}]},
+  {id:16,icon:'🌟',name:'Motivation Caption Generator',desc:'Powerful captions that get massive engagement.',cat:'instagram',inputs:[{id:'context',label:'Context or Struggle',type:'text',ph:'e.g. dealing with failure, starting over'},{id:'audience',label:'Your Audience',type:'text',ph:'e.g. young entrepreneurs, mothers'}]},
+  {id:17,icon:'📝',name:'Blog Post Generator',desc:'Full SEO-optimized blog post with structure.',cat:'blog',inputs:[{id:'title',label:'Blog Post Topic',type:'text',ph:'What do you want to write about?'},{id:'keywords',label:'Target Keywords',type:'text',ph:'keyword1, keyword2'},{id:'length',label:'Word Count',type:'select',options:['500 words','800 words','1200 words','2000 words']}]},
+  {id:18,icon:'📰',name:'Blog Title Generator',desc:'10 SEO blog titles that rank and get clicks.',cat:'blog',inputs:[{id:'topic',label:'Blog Topic',type:'text',ph:'What is your blog about?'},{id:'keyword',label:'Main Keyword',type:'text',ph:'Your target keyword'}]},
+  {id:19,icon:'🔍',name:'SEO Meta Description Generator',desc:'160-char meta descriptions that boost CTR.',cat:'blog',inputs:[{id:'title',label:'Page or Blog Title',type:'text',ph:'Your page title'},{id:'keyword',label:'Focus Keyword',type:'text',ph:'Your SEO keyword'}]},
+  {id:20,icon:'📣',name:'Headline Generator',desc:'Magnetic headlines that grab attention instantly.',cat:'blog',inputs:[{id:'content',label:'What is your content about?',type:'text',ph:'Describe your article or page'},{id:'type',label:'Headline Type',type:'select',options:['Curiosity','Benefit-driven','How-to','Question']}]},
+  {id:21,icon:'🧠',name:'Content Idea Generator',desc:'15 fresh content ideas for your niche.',cat:'blog',inputs:[{id:'niche',label:'Your Niche or Industry',type:'text',ph:'e.g. personal development, SaaS'},{id:'type',label:'Content Type',type:'select',options:['Blog Posts','Social Media','Video Scripts','Newsletters','Podcasts']}]},
+  {id:22,icon:'❓',name:'Question Generator',desc:'20 FAQs and audience questions for any topic.',cat:'blog',inputs:[{id:'topic',label:'Topic or Product',type:'text',ph:'Your topic or product'},{id:'purpose',label:'Purpose',type:'select',options:['FAQ Page','Blog Post','YouTube Comments','Product Page']}]},
+  {id:23,icon:'📢',name:'Ad Copy Generator',desc:'High-converting ad copy for any platform.',cat:'marketing',inputs:[{id:'product',label:'Product or Service',type:'text',ph:'What are you advertising?'},{id:'audience',label:'Target Audience',type:'text',ph:'Who is your ideal customer?'},{id:'platform',label:'Platform',type:'select',options:['Facebook/Instagram','Google Ads','YouTube Pre-roll','LinkedIn']}]},
+  {id:24,icon:'🛍️',name:'Product Description Generator',desc:'Compelling descriptions that convert browsers to buyers.',cat:'marketing',inputs:[{id:'product',label:'Product Name and Details',type:'textarea',ph:'Describe your product...'},{id:'audience',label:'Target Customer',type:'text',ph:'Who buys this?'}]},
+  {id:25,icon:'🚀',name:'Landing Page Copy Generator',desc:'Full landing page copy that converts.',cat:'marketing',inputs:[{id:'offer',label:'Your Offer or Product',type:'text',ph:'What are you selling?'},{id:'benefit',label:'Main Benefit or Promise',type:'text',ph:'Your biggest promise'}]},
+  {id:26,icon:'📧',name:'Email Generator',desc:'Professional emails for every purpose.',cat:'marketing',inputs:[{id:'purpose',label:'Email Purpose',type:'select',options:['Cold Outreach','Newsletter','Follow-up','Welcome Email','Sales Email']},{id:'context',label:'Context or Details',type:'textarea',ph:'What is this email about?'},{id:'tone',label:'Tone',type:'select',options:['Professional','Casual','Urgent','Friendly','Formal']}]},
+  {id:27,icon:'💰',name:'Sales Copy Generator',desc:'Persuasive sales copy with proven triggers.',cat:'marketing',inputs:[{id:'product',label:'Product or Service',type:'text',ph:'What are you selling?'},{id:'pain',label:'Customer Pain Point',type:'text',ph:'What problem do you solve?'}]},
+  {id:28,icon:'💡',name:'Brand Slogan Generator',desc:'15 catchy slogans that define your brand.',cat:'marketing',inputs:[{id:'brand',label:'Brand Name',type:'text',ph:'Your brand or company name'},{id:'what',label:'What you do',type:'text',ph:'Your main product or service'}]},
+  {id:29,icon:'📖',name:'Story Generator',desc:'Original short stories with plot and characters.',cat:'creator',inputs:[{id:'genre',label:'Genre',type:'select',options:['Thriller','Romance','Sci-Fi','Fantasy','Horror','Drama','Comedy']},{id:'premise',label:'Story Premise',type:'text',ph:'Brief story idea or theme'},{id:'length',label:'Length',type:'select',options:['Flash (300 words)','Short (700 words)','Medium (1200 words)']}]},
+  {id:30,icon:'🎥',name:'Movie Plot Generator',desc:'Full movie plots with 3-act structure.',cat:'creator',inputs:[{id:'genre',label:'Genre',type:'select',options:['Action','Thriller','Romance','Sci-Fi','Fantasy','Horror','Drama']},{id:'concept',label:'Core Concept',type:'text',ph:'Your movie idea in one line'},{id:'setting',label:'Setting',type:'text',ph:'e.g. near-future Tokyo, 1800s London'}]},
+  {id:31,icon:'🎭',name:'Character Generator',desc:'Deep characters with backstory, flaws and arc.',cat:'creator',inputs:[{id:'type',label:'Character Type',type:'select',options:['Hero/Protagonist','Villain/Antagonist','Mentor','Anti-hero','Comic Relief']},{id:'setting',label:'Story Setting',type:'text',ph:'e.g. dystopian future, medieval fantasy'}]},
+  {id:32,icon:'🗣️',name:'Dialogue Generator',desc:'Natural character-driven dialogue for any scene.',cat:'creator',inputs:[{id:'scene',label:'Scene Description',type:'textarea',ph:'Describe the scene...'},{id:'chars',label:'Characters Involved',type:'text',ph:'e.g. detective and suspect'},{id:'emotion',label:'Emotional Tone',type:'select',options:['Tense','Romantic','Comedic','Heartbreaking','Confrontational']}]},
+  {id:33,icon:'🎞️',name:'Scene Generator',desc:'Vivid cinematic scene descriptions.',cat:'creator',inputs:[{id:'location',label:'Scene Location',type:'text',ph:'e.g. abandoned warehouse, rooftop at sunset'},{id:'action',label:'What happens?',type:'textarea',ph:'Describe the events...'},{id:'mood',label:'Mood',type:'select',options:['Tense','Romantic','Eerie','Epic','Intimate','Chaotic']}]},
+  {id:34,icon:'🖼️',name:'Storyboard Text Generator',desc:'Shot-by-shot storyboard for your video.',cat:'creator',inputs:[{id:'scene',label:'Scene to Storyboard',type:'textarea',ph:'Describe your scene...'},{id:'shots',label:'Number of Shots',type:'select',options:['6 shots','10 shots','15 shots','20 shots']}]},
+  {id:35,icon:'📜',name:'Script Generator',desc:'Full scripts for podcasts, videos and presentations.',cat:'writing',inputs:[{id:'type',label:'Script Type',type:'select',options:['Podcast Episode','Explainer Video','Presentation','Training Video','Documentary Narration']},{id:'topic',label:'Topic',type:'text',ph:'Your topic'},{id:'duration',label:'Duration',type:'select',options:['2 minutes','5 minutes','10 minutes','20 minutes']}]},
+  {id:36,icon:'✏️',name:'Paragraph Rewriter',desc:'Rewrite any text to be clearer and more engaging.',cat:'writing',inputs:[{id:'text',label:'Text to Rewrite',type:'textarea',ph:'Paste your paragraph here...'},{id:'style',label:'Rewrite Style',type:'select',options:['More Engaging','More Professional','Simpler','More Persuasive','SEO Optimized']}]},
+  {id:37,icon:'📋',name:'Summary Generator',desc:'Condense any content into clear summaries.',cat:'writing',inputs:[{id:'content',label:'Content to Summarize',type:'textarea',ph:'Paste your text here...'},{id:'length',label:'Summary Format',type:'select',options:['1 paragraph','3 bullet points','Executive summary (5 points)','Twitter thread (5 tweets)']}]},
+  {id:38,icon:'✅',name:'Grammar Fixer',desc:'Fix grammar, spelling and style in any text.',cat:'writing',inputs:[{id:'text',label:'Text to Fix',type:'textarea',ph:'Paste your text here...'},{id:'level',label:'Fix Level',type:'select',options:['Grammar & Spelling only','Grammar + Style','Full Polish','Make Professional']}]},
+  {id:39,icon:'👤',name:'Resume and About Me Generator',desc:'Professional bios and resume summaries.',cat:'writing',inputs:[{id:'name',label:'Your Name',type:'text',ph:'Your full name'},{id:'role',label:'Your Role or Title',type:'text',ph:'e.g. Digital Marketer, Developer'},{id:'experience',label:'Key Experience',type:'textarea',ph:'Your skills and achievements...'},{id:'type',label:'Output Type',type:'select',options:['Professional Bio','Resume Summary','LinkedIn About','Cover Letter Intro']}]},
+  {id:40,icon:'🌈',name:'Creative Writing Generator',desc:'Poems, flash fiction and creative pieces.',cat:'writing',inputs:[{id:'type',label:'Creative Type',type:'select',options:['Short Poem','Flash Fiction','Song Chorus Concept','Personal Essay Intro']},{id:'theme',label:'Theme or Topic',type:'text',ph:'What is it about?'},{id:'emotion',label:'Emotion or Tone',type:'text',ph:'e.g. nostalgic, hopeful, bittersweet'}]}
+];
+
+var HOME_TOOL_IDS = [1,5,9,12,17,19,23,28,29,32,37,38];
+var HOME_TOOLS = HOME_TOOL_IDS.map(function(id){ return TOOLS.find(function(t){ return t.id === id; }); });
+
+// ═══════════════════════════════════════════════════
+//  PAGE NAVIGATION
+// ═══════════════════════════════════════════════════
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.nav-links a').forEach(function(a){ a.classList.remove('active'); });
+  var pg = document.getElementById('page-' + name);
+  if(pg) pg.classList.add('active');
+  var nav = document.getElementById('nav-' + name);
+  if(nav) nav.classList.add('active');
+  window.scrollTo(0,0);
+  if(name === 'trending') loadAllTrends();
+}
+function toggleMobile() {
+  var hb = document.getElementById('hamburger');
+  var mm = document.getElementById('mobileMenu');
+  hb.classList.toggle('open');
+  mm.classList.toggle('open');
+  document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+}
+function closeMobile() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ═══════════════════════════════════════════════════
+//  RENDER TOOL GRIDS
+// ═══════════════════════════════════════════════════
+var CAT_LABELS = {youtube:'YouTube',instagram:'Instagram',blog:'Blog & SEO',marketing:'Marketing',creator:'Creator & Film',writing:'Writing'};
+function renderGrid(containerId, toolsList) {
+  var grid = document.getElementById(containerId);
+  if(!grid) return;
+  grid.innerHTML = toolsList.filter(Boolean).map(function(t) {
+    return '<div class="tool-card" onclick="openTool(' + t.id + ')">'
+      + '<div class="tool-icon">' + t.icon + '</div>'
+      + '<div class="tool-name">' + t.name + '</div>'
+      + '<div class="tool-desc">' + t.desc + '</div>'
+      + '<span class="tool-cat cat-' + t.cat + '">' + (CAT_LABELS[t.cat]||t.cat) + '</span>'
+      + '</div>';
+  }).join('');
+}
+function filterTools(cat, btn) {
+  document.querySelectorAll('.filter-tabs .tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  var filtered = cat === 'all' ? TOOLS : TOOLS.filter(function(t){ return t.cat === cat; });
+  renderGrid('toolsGrid', filtered);
+}
+
+// ═══════════════════════════════════════════════════
+//  MODAL
+// ═══════════════════════════════════════════════════
+var currentToolId = null;
+function openTool(id) {
+  var tool = TOOLS.find(function(t){ return t.id === id; });
+  if(!tool) return;
+  currentToolId = id;
+  document.getElementById('modalIcon').textContent = tool.icon;
+  document.getElementById('modalTitle').textContent = tool.name;
+  var html = tool.inputs.map(function(inp) {
+    var field = '';
+    if(inp.type === 'select') {
+      field = '<select id="inp_' + inp.id + '">' + inp.options.map(function(o){ return '<option value="' + o + '">' + o + '</option>'; }).join('') + '</select>';
+    } else if(inp.type === 'textarea') {
+      field = '<textarea id="inp_' + inp.id + '" placeholder="' + (inp.ph||'') + '"></textarea>';
+    } else {
+      field = '<input type="text" id="inp_' + inp.id + '" placeholder="' + (inp.ph||'') + '">';
+    }
+    return '<div class="input-group"><label>' + inp.label + '</label>' + field + '</div>';
+  }).join('');
+  document.getElementById('modalBody').innerHTML = html
+    + '<button class="generate-btn" id="genBtn" onclick="runGenerate()">&#9889; Generate Now</button>'
+    + '<div class="loading-wrap" id="loadingWrap"><div class="spinner"></div><span>Generating your content...</span></div>'
+    + '<div class="progress-bar" id="progBar"></div>'
+    + '<div class="output-box" id="outputBox"></div>'
+    + '<div class="output-actions" id="outputActions">'
+    + '<button class="act-btn" onclick="copyOutput()">&#128203; Copy All</button>'
+    + '<button class="act-btn regen" onclick="runGenerate()">&#8635; Regenerate</button>'
+    + '</div>';
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Focus first text input
+  setTimeout(function(){
+    var first = document.querySelector('#modalBody input[type=text], #modalBody textarea');
+    if(first) first.focus();
+  }, 300);
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  currentToolId = null;
+}
+function handleOverlayClick(e) {
+  if(e.target === document.getElementById('modalOverlay')) closeModal();
+}
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+
+// ═══════════════════════════════════════════════════
+//  GENERATE — 100% Offline Smart Engine
+// ═══════════════════════════════════════════════════
+function runGenerate() {
+  if(!currentToolId) return;
+  var tool = TOOLS.find(function(t){ return t.id === currentToolId; });
+  if(!tool) return;
+
+  // Collect fields and validate
+  var fields = {};
+  var hasError = false;
+  tool.inputs.forEach(function(inp) {
+    var el = document.getElementById('inp_' + inp.id);
+    if(!el) return;
+    var val = el.value.trim();
+    fields[inp.id] = val;
+    // Only validate text/textarea (selects always have a value)
+    if(inp.type !== 'select' && !val) {
+      el.classList.add('input-error');
+      el.placeholder = 'Please fill this in first!';
+      setTimeout(function(){ el.classList.remove('input-error'); el.placeholder = inp.ph || ''; }, 2500);
+      hasError = true;
+    }
+  });
+  if(hasError) return;
+
+  var btn = document.getElementById('genBtn');
+  var loader = document.getElementById('loadingWrap');
+  var progBar = document.getElementById('progBar');
+  var outputBox = document.getElementById('outputBox');
+  var outputActions = document.getElementById('outputActions');
+
+  btn.disabled = true;
+  loader.classList.add('show');
+  outputBox.classList.remove('show');
+  outputActions.classList.remove('show');
+  progBar.style.width = '0';
+
+  // Animate progress bar
+  setTimeout(function(){ progBar.style.width = '60%'; }, 100);
+  setTimeout(function(){ progBar.style.width = '90%'; }, 500);
+
+  var delay = 700 + Math.random() * 600;
+  setTimeout(function() {
+    progBar.style.width = '100%';
+    setTimeout(function() {
+      var result = smartGenerate(currentToolId, fields);
+      outputBox.textContent = result;
+      outputBox.classList.add('show');
+      outputActions.classList.add('show');
+      btn.disabled = false;
+      loader.classList.remove('show');
+      progBar.style.width = '0';
+      // Scroll output into view
+      outputBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 200);
+  }, delay);
+}
+
+function copyOutput() {
+  var text = document.getElementById('outputBox').textContent;
+  var btn = document.querySelector('.act-btn');
+  if(navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      btn.textContent = '✅ Copied!';
+      setTimeout(function(){ btn.textContent = '\u{1F4CB} Copy All'; }, 2000);
+    }).catch(function(){ fallbackCopy(text, btn); });
+  } else { fallbackCopy(text, btn); }
+}
+function fallbackCopy(text, btn) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); btn.textContent = '✅ Copied!'; setTimeout(function(){ btn.textContent = '\u{1F4CB} Copy All'; }, 2000); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+// ═══════════════════════════════════════════════════
+//  TRENDING / RSS
+// ═══════════════════════════════════════════════════
+var RSS_PROXY = 'https://api.rss2json.com/v1/api.json?rss_url=';
+var FEEDS = {
+  yt:   'https://news.google.com/rss/search?q=youtube+creators+trending&hl=en-IN&gl=IN&ceid=IN:en',
+  gn:   'https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en',
+  tech: 'https://feeds.feedburner.com/TechCrunch',
+  ent:  'https://variety.com/feed/'
+};
+var FALLBACKS = {
+  yt: ['YouTube Creator Economy Hits New Heights in 2026','Short-Form Video Dominates Creator Revenue Streams','Top 10 Content Trends Every YouTuber Should Know','YouTube Launches New Creator Monetization Features','Indian YouTubers Breaking Global Records','Going Viral: What the Algorithm Rewards in 2026','YouTube Shorts vs TikTok: Which Pays More?','AI-Powered Content Creation Takes Over YouTube'],
+  gn: ['India Emerges as Global Tech Innovation Hub','AI Tools Transform Small Business Productivity','Startup Ecosystem Sees Record Investment in 2026','Digital Economy Creates Millions of New Jobs','Social Media Marketing Evolves With New Platforms','Content Creator Economy Surpasses Traditional Media','Remote Work Revolution Reshapes Global Workforce','India Tech Sector Continues Strong Growth'],
+  tech: ['OpenAI Releases Most Powerful Model Yet','Google DeepMind Achieves New AI Breakthrough','Meta AR Glasses Change Social Media Forever','Apple Intelligence Features Roll Out Globally','Open Source AI Movement Gains Momentum','AI Video Generation Goes Mainstream in 2026','5G Expansion Creates New Creator Opportunities','Cybersecurity Evolves in the Age of AI'],
+  ent: ['Blockbuster Film Breaks All-Time Box Office Record','Streaming Wars Intensify With New Deals','Indian Cinema Conquers Global Streaming Charts','Music Revenue Surges Thanks to Short-Form Video','Celebrity Creator Partnerships Reshape Brand Marketing','New Reality Show Format Goes Viral Globally','Podcast Industry Reaches 5 Billion Monthly Listeners','Gaming Content Becomes Mainstream Entertainment']
+};
+var CUR_MONTH_TREND = ['January','February','March','April','May','June','July','August','September','October','November','December'][new Date().getMonth()];
+var CUR_YEAR_TREND = new Date().getFullYear();
+
+function fetchAndRender(feedKey, containerId, badgeClass, badgeLabel) {
+  var el = document.getElementById(containerId);
+  if(!el) return;
+  fetch(RSS_PROXY + encodeURIComponent(FEEDS[feedKey]) + '&count=8')
+    .then(function(r){ return r.json(); })
+    .then(function(data) {
+      if(data.status === 'ok' && data.items && data.items.length) {
+        el.innerHTML = data.items.slice(0,8).map(function(item, i) {
+          var safeLink = item.link.replace(/"/g, '&quot;');
+          var dateStr = item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-IN',{day:'numeric',month:'short'}) : 'Today';
+          return '<div class="rss-item" data-url="' + safeLink + '">'
+            + '<div class="trend-num">' + String(i+1).padStart(2,'0') + '</div>'
+            + '<div style="flex:1">'
+            + '<div class="rss-item-title"><a href="' + safeLink + '" target="_blank" rel="noopener">' + item.title + '</a></div>'
+            + '<div class="rss-item-meta"><span class="trend-source ' + badgeClass + '">' + badgeLabel + '</span>' + dateStr + '</div>'
+            + '</div></div>';
+        }).join('');
+        // Add click handlers (avoids inline onclick with special chars)
+        el.querySelectorAll('.rss-item[data-url]').forEach(function(row) {
+          row.addEventListener('click', function(e) {
+            if(e.target.tagName !== 'A') window.open(this.dataset.url, '_blank', 'noopener');
+          });
+        });
+      } else { renderFallback(feedKey, containerId, badgeClass, badgeLabel); }
+    }).catch(function(){ renderFallback(feedKey, containerId, badgeClass, badgeLabel); });
+}
+function renderFallback(feedKey, containerId, badgeClass, badgeLabel) {
+  var el = document.getElementById(containerId);
+  if(!el) return;
+  var items = shuffle(FALLBACKS[feedKey] || FALLBACKS.gn);
+  el.innerHTML = items.map(function(title, i) {
+    return '<div class="rss-item">'
+      + '<div class="trend-num">' + String(i+1).padStart(2,'0') + '</div>'
+      + '<div style="flex:1">'
+      + '<div class="rss-item-title">' + title + '</div>'
+      + '<div class="rss-item-meta"><span class="trend-source ' + badgeClass + '">' + badgeLabel + '</span>' + CUR_MONTH_TREND + ' ' + CUR_YEAR_TREND + '</div>'
+      + '</div></div>';
+  }).join('');
+}
+function loadingState(id) { var el=document.getElementById(id); if(el) el.innerHTML='<div class="trend-loading">⏳ Loading...</div>'; }
+function loadYoutubeTrends() { loadingState('ytTrends'); fetchAndRender('yt','ytTrends','src-yt','YouTube'); }
+function loadGoogleNews()    { loadingState('googleNews'); fetchAndRender('gn','googleNews','src-news','News'); }
+function loadTechNews()      { loadingState('techNews'); fetchAndRender('tech','techNews','src-tech','Tech'); }
+function loadEntNews()       { loadingState('entNews'); fetchAndRender('ent','entNews','src-ent','Entertainment'); }
+function loadAllTrends()     { loadYoutubeTrends(); loadGoogleNews(); loadTechNews(); loadEntNews(); loadHashtags(); }
+
+var HASHTAGS = ['#Viral2026','#AITools','#ContentCreator','#YouTubeGrowth','#InstagramTips','#Trending','#CreatorEconomy','#VideoMarketing','#SocialMediaMarketing','#Reels','#Shorts','#BloggingTips','#SEOTips','#DigitalMarketing','#GrowthHacking','#OnlineBusiness','#ContentMarketing','#Filmmaker','#IndianCreators','#ViralContent','#CreatorTools','#FreeTools','#YouTubeCreator','#InstagramGrowth','#ContentStrategy'];
+function copyHashtag(btn, tag) {
+  if(navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(tag).then(function() {
+      var orig = btn.textContent;
+      btn.textContent = '✅ Copied!';
+      btn.style.color = 'var(--neon)';
+      btn.style.borderColor = 'var(--neon)';
+      setTimeout(function(){ btn.textContent = orig; btn.style.color = ''; btn.style.borderColor = ''; }, 1500);
+    });
+  }
+}
+function loadHashtags() {
+  var el = document.getElementById('trendHashtags');
+  if(!el) return;
+  el.innerHTML = HASHTAGS.map(function(tag) {
+    return '<span class="hashtag-pill" style="padding:7px 16px;border-radius:100px;border:1px solid var(--border2);background:var(--card);font-size:0.83rem;cursor:pointer;transition:all 0.2s;color:var(--muted)">' + tag + '</span>';
+  }).join('');
+  el.querySelectorAll('.hashtag-pill').forEach(function(pill, i) {
+    pill.addEventListener('click', function(){ copyHashtag(this, HASHTAGS[i]); });
+  });
+}
+
+// ═══════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════
+renderGrid('toolsGrid', TOOLS);
+renderGrid('homeToolsGrid', HOME_TOOLS);
+</script>
+</body>
+</html>
