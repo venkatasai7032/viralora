@@ -1856,21 +1856,40 @@ function runGenerate() {
   setTimeout(function(){ progBar.style.width = '60%'; }, 100);
   setTimeout(function(){ progBar.style.width = '90%'; }, 500);
 
-  var delay = 700 + Math.random() * 600;
-  setTimeout(function() {
-    progBar.style.width = '100%';
-    setTimeout(function() {
+  setTimeout(function(){ progBar.style.width = '60%'; }, 100);
+
+  // ── Real AI via Groq (through the Cloudflare Worker proxy) ──
+  // Replace with your deployed Worker URL after setup.
+  var AI_ENDPOINT = 'https://viralora-ai.avulavenkatasaiyadav123.workers.dev';
+
+  fetch(AI_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ toolName: tool.name, toolDesc: tool.desc, fields: fields })
+  })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var result = (data && data.output) ? data.output : smartGenerate(currentToolId, fields);
+      finishGenerate(result, btn, loader, progBar, outputBox, outputActions);
+    })
+    .catch(function(){
+      // Worker unreachable / quota hit → fall back to the offline template so the tool still works
       var result = smartGenerate(currentToolId, fields);
-      outputBox.textContent = result;
-      outputBox.classList.add('show');
-      outputActions.classList.add('show');
-      btn.disabled = false;
-      loader.classList.remove('show');
-      progBar.style.width = '0';
-      // Scroll output into view
-      outputBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 200);
-  }, delay);
+      finishGenerate(result, btn, loader, progBar, outputBox, outputActions);
+    });
+}
+
+function finishGenerate(result, btn, loader, progBar, outputBox, outputActions) {
+  progBar.style.width = '100%';
+  setTimeout(function() {
+    outputBox.textContent = result;
+    outputBox.classList.add('show');
+    outputActions.classList.add('show');
+    btn.disabled = false;
+    loader.classList.remove('show');
+    progBar.style.width = '0';
+    outputBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 150);
 }
 
 function copyOutput() {
@@ -1916,12 +1935,15 @@ var CUR_YEAR_TREND = new Date().getFullYear();
 function fetchAndRender(feedKey, containerId, badgeClass, badgeLabel) {
   var el = document.getElementById(containerId);
   if(!el) return;
-  fetch(RSS_PROXY + encodeURIComponent(FEEDS[feedKey]) + '&count=8')
+  // Reads the static trending.json (regenerated daily by a GitHub Action) —
+  // no live third-party API call needed, no rate limits, no server.
+  fetch('/trending.json?t=' + Date.now())
     .then(function(r){ return r.json(); })
     .then(function(data) {
-      if(data.status === 'ok' && data.items && data.items.length) {
-        el.innerHTML = data.items.slice(0,8).map(function(item, i) {
-          var safeLink = item.link.replace(/"/g, '&quot;');
+      var items = data && data[feedKey];
+      if(items && items.length) {
+        el.innerHTML = items.slice(0,8).map(function(item, i) {
+          var safeLink = (item.link || '').replace(/"/g, '&quot;');
           var dateStr = item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-IN',{day:'numeric',month:'short'}) : 'Today';
           return '<div class="rss-item" data-url="' + safeLink + '">'
             + '<div class="trend-num">' + String(i+1).padStart(2,'0') + '</div>'
