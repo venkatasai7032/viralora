@@ -53,12 +53,41 @@ async function fetchFeed(url) {
   }
 }
 
+function escapeHtml(t) {
+  return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// Real "most popular" YouTube videos in India (needs YOUTUBE_API_KEY secret; returns null if missing/failed)
+async function fetchYouTubeTrending() {
+  var key = process.env.YOUTUBE_API_KEY;
+  if (!key) { console.log('No YOUTUBE_API_KEY set, using news feed for yt'); return null; }
+  try {
+    var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=IN&maxResults=30&key=' + key;
+    var res = await fetch(url);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    var data = await res.json();
+    var items = (data.items || []).map(function (v) {
+      return {
+        title: escapeHtml(v.snippet.title) + ' - ' + escapeHtml(v.snippet.channelTitle),
+        link: 'https://www.youtube.com/watch?v=' + v.id,
+        pubDate: v.snippet.publishedAt
+      };
+    }).filter(function (it) { return !BLOCKED.test(it.title); });
+    return items.slice(0, 8);
+  } catch (e) {
+    console.error('YouTube API failed:', e.message);
+    return null;
+  }
+}
+
 async function main() {
   var result = {};
   for (var key in FEEDS) {
     result[key] = await fetchFeed(FEEDS[key]);
     console.log(key + ':', result[key].length, 'items');
   }
+  var ytVideos = await fetchYouTubeTrending();
+  if (ytVideos && ytVideos.length) { result.yt = ytVideos; console.log('yt: using YouTube API,', ytVideos.length, 'videos'); }
   result.updatedAt = new Date().toISOString();
   fs.writeFileSync('trending.json', JSON.stringify(result, null, 2));
   console.log('trending.json written.');
