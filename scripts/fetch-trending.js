@@ -8,7 +8,7 @@ const fs = require('fs');
 const FEEDS = {
   yt:   'https://news.google.com/rss/search?q=youtube+creators+trending&hl=en-IN&gl=IN&ceid=IN:en',
   gn:   'https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en',
-  tech: 'https://feeds.feedburner.com/TechCrunch',
+  tech: 'https://techcrunch.com/feed/',
   ent:  'https://variety.com/feed/'
 };
 
@@ -31,6 +31,7 @@ function parseRss(xml) {
       });
     }
   });
+  items.sort(function (a, b) { return new Date(b.pubDate) - new Date(a.pubDate); });
   return items.slice(0, 8);
 }
 
