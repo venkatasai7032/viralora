@@ -19,6 +19,8 @@ jobs:
           node-version: '20'
 
       - name: Fetch trending data
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: node scripts/fetch-trending.js
 
       - name: Commit and push if changed
