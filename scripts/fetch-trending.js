@@ -12,6 +12,9 @@ const FEEDS = {
   ent:  'https://variety.com/feed/'
 };
 
+// Headlines containing these words are skipped (keeps the site advertiser/AdSense friendly)
+const BLOCKED = /\b(rape[sd]?|rapist|gang-?rape|molest\w*|sexual assault|sexually assault\w*|murder\w*|suicide|self-harm|lynch\w*|massacre|beheaded|porn\w*|drugged|terror attack|bomb blast|shot dead|stabbed|killed|kills)\b/i;
+
 function stripCdata(s) {
   return (s || '').replace('<![CDATA[', '').replace(']]>', '').trim();
 }
@@ -31,6 +34,7 @@ function parseRss(xml) {
       });
     }
   });
+  items = items.filter(function (it) { return !BLOCKED.test(it.title); });
   items.sort(function (a, b) { return new Date(b.pubDate) - new Date(a.pubDate); });
   return items.slice(0, 8);
 }
