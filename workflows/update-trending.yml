@@ -1,0 +1,30 @@
+name: Update Trending Data
+
+on:
+  schedule:
+    - cron: '0 3 * * *'   # daily ~8:30 AM IST (03:00 UTC)
+  workflow_dispatch: {}    # lets you trigger manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update-trending:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch trending data
+        run: node scripts/fetch-trending.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "viralora-trending-bot"
+          git config user.email "actions@github.com"
+          git add trending.json
+          git diff --quiet --cached || git commit -m "chore: update trending data [automated]"
+          git push
