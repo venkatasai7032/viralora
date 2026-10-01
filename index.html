@@ -20,6 +20,12 @@
   --text:#e8eaf6;--muted:#7a8499;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+
+/* LANGUAGE SWITCHER */
+.goog-te-banner-frame,.skiptranslate{display:none !important}
+body{top:0 !important}
+.goog-tooltip,.goog-tooltip:hover{display:none !important}
+.goog-text-highlight{background:none !important;box-shadow:none !important}
 html{scroll-behavior:smooth}
 body{background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
 
@@ -445,12 +451,12 @@ footer p{max-width:420px;margin:0 auto 1.5rem;line-height:1.7;}
   <div class="privacy-content">
     <h1>Privacy Policy</h1>
     <div class="privacy-date">Last updated: <strong>March 2026</strong> &middot; Applies to viralora.org</div>
-    <div class="privacy-highlight"><p>🔒 <strong>Short version:</strong> Viralora does not collect, store, or sell any personal data. All AI tools run entirely in your browser using smart JavaScript. We use Google AdSense for ads.</p></div>
-    <div class="privacy-section"><h2>1. Who We Are</h2><p>Viralora (viralora.org) is operated by <strong>Venkata Sai Yadav</strong>, based in Kadapa, Andhra Pradesh, India. We provide browser-based AI content generation tools for creators worldwide.</p></div>
-    <div class="privacy-section"><h2>2. Information We Do NOT Collect</h2><ul><li>Personal information (name, email, phone)</li><li>Account data — no sign-up or login exists</li><li>Your prompts or outputs — all runs locally in your browser</li><li>Payment information — all tools are completely free</li><li>Location data or IP address logs</li></ul></div>
-    <div class="privacy-section"><h2>3. How Our AI Tools Work</h2><p>All AI tools use a smart JavaScript template engine that runs entirely in your browser. No data is sent to any server. Everything stays on your device.</p></div>
+    <div class="privacy-highlight"><p>🔒 <strong>Short version:</strong> Viralora does not require sign-up and does not sell personal data. The text you type into a tool is sent securely to our AI provider (Groq) only to generate your result, and is not stored or linked to you. We use Google AdSense for ads.</p></div>
+    <div class="privacy-section"><h2>1. Who We Are</h2><p>Viralora (viralora.org) is operated by <strong>Venkata Sai Yadav</strong>, based in Kadapa, Andhra Pradesh, India. We provide free AI content generation tools for creators worldwide.</p></div>
+    <div class="privacy-section"><h2>2. Information We Do NOT Collect</h2><ul><li>Personal information (name, email, phone)</li><li>Account data — no sign-up or login exists</li><li>Payment information — all tools are completely free</li><li>Location data or IP address logs</li></ul></div>
+    <div class="privacy-section"><h2>3. How Our AI Tools Work</h2><p>When you click Generate, the text you entered is sent securely to our AI provider, Groq, which processes it and returns the generated content. This happens in real time and is not permanently stored or linked to your identity. If the AI service is temporarily unavailable, a tool may fall back to a built-in offline template so you still get a result.</p></div>
     <div class="privacy-section"><h2>4. Google AdSense</h2><p>Viralora uses Google AdSense to display ads. Google may use cookies to show relevant ads. You can opt out at <a href="https://www.google.com/settings/ads" target="_blank" style="color:var(--neon)">Google Ad Settings</a>.</p></div>
-    <div class="privacy-section"><h2>5. Contact</h2><div class="privacy-highlight"><p><strong>Venkata Sai Yadav</strong><br>📍 Kadapa, Andhra Pradesh, India<br>🌐 viralora.org</p></div></div>
+    <div class="privacy-section"><h2>5. Contact</h2><div class="privacy-highlight"><p><strong>Venkata Sai Yadav</strong><br>📍 Kadapa, Andhra Pradesh, India<br>✉️ <a href="mailto:venkatasaiyadavavula@gmail.com" style="color:var(--neon)">venkatasaiyadavavula@gmail.com</a><br>🌐 viralora.org</p></div></div>
   </div>
 </div>
 
@@ -465,6 +471,7 @@ footer p{max-width:420px;margin:0 auto 1.5rem;line-height:1.7;}
     <a onclick="showPage('privacy')">Privacy</a>
   </div>
   <div>&copy; 2026 Viralora.org &middot; Created by <strong style="color:var(--neon)">Venkata Sai Yadav</strong> &middot; Kadapa, Andhra Pradesh, India</div>
+  <div style="margin-top:0.4rem"><a href="mailto:venkatasaiyadavavula@gmail.com" style="color:var(--muted)">venkatasaiyadavavula@gmail.com</a></div>
 </footer>
 
 <!-- MODAL -->
@@ -2010,5 +2017,6 @@ function loadHashtags() {
 renderGrid('toolsGrid', TOOLS);
 renderGrid('homeToolsGrid', HOME_TOOLS);
 </script>
+
 </body>
 </html>
